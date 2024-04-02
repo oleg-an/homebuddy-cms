@@ -1,0 +1,116 @@
+.popper {
+  @apply opacity-100 bg-white text-slate-900 rounded-md text-xs;
+  padding: 11px 15px;
+  border: 1px solid transparent;
+  text-align: center;
+  z-index: 50;
+  width: fit-content;
+  filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.15));
+  visibility: hidden;
+  &[data-popper-placement] {
+    background-color: white;
+  }
+  &[data-popper-placement='top'] {
+    > span[data-popper-arrow='true'] {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid white;
+      left: -60px;
+      bottom: -9px;
+    }
+  }
+  &[data-popper-placement='top-start'] {
+    > span[data-popper-arrow='true'] {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid white;
+
+      bottom: -9px;
+    }
+  }
+
+  &[data-popper-placement='top-end'] {
+    > span[data-popper-arrow='true'] {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid white;
+
+      bottom: -9px;
+    }
+  }
+  &[data-popper-placement='bottom'] {
+    > span[data-popper-arrow='true'] {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid white;
+
+      top: -9px;
+    }
+  }
+
+  &[data-popper-placement='bottom-start'] {
+    > span[data-popper-arrow='true'] {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid white;
+
+      top: -9px;
+    }
+  }
+
+  &[data-popper-placement='bottom-end'] {
+    background-color: white;
+
+    > span[data-popper-arrow='true'] {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid white;
+
+      top: -9px;
+    }
+  }
+
+  &[data-popper-placement='left'] {
+    background-color: white;
+
+    > span[data-popper-arrow='true'] {
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid white;
+
+      right: -10px;
+    }
+  }
+
+  &[data-popper-placement='right'] {
+    background-color: white;
+
+    > span[data-popper-arrow='true'] {
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right: 10px solid white;
+
+      left: -10px;
+    }
+  }
+}
+
+.isVisible {
+  visibility: visible;
+}

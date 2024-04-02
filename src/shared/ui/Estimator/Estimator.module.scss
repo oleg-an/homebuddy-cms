@@ -1,0 +1,16 @@
+.bulbWrapper {
+  box-shadow: 0px 4px 13px 0px rgba(0, 0, 0, 0.09);
+  border-radius: 100%;
+  padding-left: 9px;
+  padding-top: 7px;
+  width: 36px;
+  height: 36px;
+}
+
+.estimationItem {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 4px 14px 0px rgba(47, 84, 235, 0.1);
+  padding: 8px 16px;
+  border-radius: 4px;
+}

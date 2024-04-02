@@ -1,0 +1,36 @@
+.textarea {
+  font-family: system-ui, Inter, sans-serif;
+  outline: none;
+  resize: none;
+}
+
+.textarea::placeholder {
+  font-family: 'Inter', sans-serif;
+  @apply text-slate-900 font-medium text-sm;
+}
+
+.textareaScroll {
+  &::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @apply bg-deep-blue-100 rounded-xxl bg-clip-padding;
+    border: 6px solid rgba(0, 0, 0, 0);
+    height: 52px;
+  }
+
+  &::-webkit-scrollbar-corner {
+    @apply bg-deep-blue-25;
+  }
+}
+
+.textarea:disabled {
+  @apply bg-slate-25 text-slate-400;
+}
+
+.error {
+  @apply border-red-500;
+  border-width: 1px;
+  border-style: solid;
+}

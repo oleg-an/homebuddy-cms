@@ -1,0 +1,46 @@
+@tailwind components;
+
+@layer components {
+  .badge {
+    @apply w-fit flex items-center justify-center px-2 py-1 text-xs rounded-sm whitespace-nowrap;
+
+    &.withIcon {
+      @apply justify-start;
+    }
+
+    &.medium {
+      width: 130px;
+    }
+    &.large {
+      width: 175px;
+    }
+    &.extraLarge {
+      width: 183px;
+    }
+
+    &.deepGreen {
+      @apply bg-deep-green-50 text-deep-green-800;
+    }
+    &.mint {
+      @apply bg-mint-50 text-mint-800;
+    }
+    &.slate {
+      @apply bg-slate-50 text-slate-700;
+    }
+    &.magenta {
+      @apply bg-magenta-50 text-magenta-700;
+    }
+    &.red {
+      @apply bg-red-50 text-red-700;
+    }
+    &.orange {
+      @apply bg-orange-50 text-orange-700;
+    }
+    &.deepBlue {
+      @apply bg-deep-blue-50 text-deep-blue-700;
+    }
+    &.yellow {
+      @apply bg-yellow-50 text-yellow-800;
+    }
+  }
+}

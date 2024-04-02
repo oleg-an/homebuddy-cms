@@ -1,0 +1,130 @@
+input[type='tel'],
+input[type='text'],
+input[type='number'],
+input[type='email'],
+input[type='password'] {
+  height: 100%;
+  font-weight: 500;
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.input {
+  input {
+    padding-top: 10px;
+    @apply bg-deep-blue-25
+    h-14
+    border
+    border-[transparent]
+    px-4
+    rounded-sm
+    text-slate-900;
+  }
+
+  input:disabled {
+    @apply bg-slate-25
+    text-slate-400;
+  }
+
+  input:disabled::placeholder {
+    @apply text-slate-400;
+  }
+
+  input:disabled + label {
+    @apply text-slate-400 #{!important};
+  }
+
+  input:hover:enabled {
+    ~ label,
+    ~ label span {
+      @apply text-deep-blue-400;
+    }
+
+    @apply border-deep-blue-400;
+  }
+
+  input:focus ~ label,
+  input:not(:placeholder-shown) ~ label,
+  .minimized-only {
+    top: 8px;
+    font-size: 11px;
+    line-height: 13px;
+    @apply text-slate-600;
+  }
+
+  label {
+    left: 1px;
+    top: 19px;
+    font-size: 14px;
+    line-height: 17px;
+    transition-property: left, top, font-size, line-height;
+    transition-duration: 150ms;
+    @apply z-0
+    whitespace-nowrap
+    absolute
+    font-medium
+    pl-4
+    cursor-text
+    m-0;
+
+    &.centered {
+      @apply my-0 mx-auto left-0 right-0 pl-0;
+    }
+
+    span {
+      @apply text-slate-400;
+    }
+  }
+
+  @apply relative;
+}
+
+.invalid {
+  input ~ label,
+  input ~ label span {
+    @apply text-red-500;
+  }
+
+  input {
+    @apply border border-red-500;
+  }
+}
+
+.valid {
+  input:focus {
+    @apply border border-deep-blue-400;
+  }
+
+  input:focus ~ label,
+  input:focus ~ label span {
+    @apply text-deep-blue-400;
+  }
+}
+
+.input-sm {
+  label {
+    top: 10px;
+  }
+
+  input:focus ~ label,
+  input:not(:placeholder-shown) ~ label {
+    display: none !important;
+  }
+
+  input {
+    padding-top: 0;
+    height: 36px;
+  }
+}

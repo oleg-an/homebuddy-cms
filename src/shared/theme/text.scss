@@ -1,0 +1,12 @@
+@layer components {
+  .custom-line-through {
+    @apply relative;
+
+    &::after {
+      @apply content-[''] absolute bg-slate-900 block w-full h-[1px] left-0 bottom-1/2;
+    }
+    &.inactive::after {
+      @apply bg-slate-400;
+    }
+  }
+}
