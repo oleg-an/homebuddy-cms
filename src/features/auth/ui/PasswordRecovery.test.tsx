@@ -88,6 +88,6 @@ describe('PasswordRecovery', () => {
 
     forgotPasswordMock.mockImplementation(() => ({ data: {} }));
     await user.click(screen.getByText('Back to Login'));
-    expect(history.location.pathname).toBe(pageRoutes.internal.auth);
+    expect(history.location.pathname).toBe(pageRoutes.app.auth);
   });
 });

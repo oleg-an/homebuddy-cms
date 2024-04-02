@@ -48,7 +48,7 @@ export function PasswordRecovery({ apiType }: PasswordRecoveryProps) {
             />
             <div className="mb-5 flex items-center justify-between text-sm font-medium text-deep-blue-500">
               <Link
-                to={pageRoutes[apiType].auth}
+                to={pageRoutes.app.auth}
                 {...getDataAutoTestAttributes(['link-password-recovery-back']).attributes}
               >
                 Back to Login

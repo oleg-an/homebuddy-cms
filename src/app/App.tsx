@@ -13,14 +13,7 @@ import { AppLayout } from './Layout/AppLayout';
 import { setRedirectUri } from './lib';
 import { ContractorAuth, ContractorPasswordRecovery } from './lazy-pages';
 
-const publicPages = [
-  pageRoutes.internal.auth,
-  pageRoutes.app.recovery,
-  pageRoutes.app.auth,
-  pageRoutes.app.newPassword,
-  pageRoutes.internal.recovery,
-  pageRoutes.internal.newPassword,
-];
+const publicPages = [pageRoutes.app.recovery, pageRoutes.app.auth, pageRoutes.app.newPassword];
 
 export function App() {
   const { setRole, getRole } = useClientDataStore();
@@ -70,7 +63,7 @@ export function App() {
                     exact
                     path={pageRoutes.app.main}
                   >
-                    <Redirect to={pageRoutes.app.campaigns} />
+                    <Redirect to={pageRoutes.app.wizard} />
                   </Route>
                   <Route>
                     <Redirect to={pageRoutes.app.notFound} />

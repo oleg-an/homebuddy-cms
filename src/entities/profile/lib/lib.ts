@@ -37,10 +37,6 @@ export function useLogout() {
     authPage = pageRoutes.app.auth;
     deleteTokenRoute = profileRoutes.app.deleteToken;
   }
-  if (role === Roles.Manager) {
-    authPage = pageRoutes.internal.auth;
-    deleteTokenRoute = profileRoutes.internal.deleteToken;
-  }
 
   return async () => {
     removeRole();

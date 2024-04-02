@@ -72,7 +72,7 @@ export function Login({ apiType, role }: { apiType: ApiType; role: Roles }) {
             <span className="text-sm">Remember me</span>
           </Checkbox>
           <Link
-            to={pageRoutes[apiType].recovery}
+            to={pageRoutes.app.recovery}
             className="text-sm font-medium text-deep-blue-500"
             {...getDataAutoTestAttributes(['href-login-forgot-password']).attributes}
           >

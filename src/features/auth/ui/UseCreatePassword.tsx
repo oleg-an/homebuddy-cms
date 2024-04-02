@@ -23,7 +23,7 @@ export function useCreatePassword(methods: UseFormReturn<CreatePasswordModel>, t
   const urlParams = new URLSearchParams(window.location.search);
   const token = urlParams.get('token')?.trim() || '';
   const email = urlParams.get('email')?.trim() || '';
-  const authPage = pageRoutes[type].auth;
+  const authPage = pageRoutes.app.auth;
 
   useEffect(() => {
     if (!token || !email) {

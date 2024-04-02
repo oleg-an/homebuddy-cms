@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 
 export enum Roles {
-  Manager = 'Manager',
   Contractor = 'Contractor',
 }
 

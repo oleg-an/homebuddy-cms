@@ -6,7 +6,6 @@ import { useTitleStoreActions, useTitleStoreTitle } from './store/useTitleStore'
 
 const titles = {
   [Roles.Contractor]: 'Contractors',
-  [Roles.Manager]: 'Managers',
 };
 
 const getPageTitle = (title: string, role?: Roles | null) => {
