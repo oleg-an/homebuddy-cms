@@ -6,7 +6,7 @@ export const mock: StepModel[] = [
     title: 'Are you considering any changes to your layout, such as relocating your appliances or sink?',
     name: 'replace',
     select: {
-      type: 'singleSelect',
+      isMultiselect: false,
       options: [
         {
           title: 'Reface all or most cabinets',

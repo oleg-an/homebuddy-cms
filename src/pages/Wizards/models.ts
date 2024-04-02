@@ -1,5 +1,3 @@
-export type StepType = 'singleSelect' | 'multiSelect';
-
 export interface SelectOptionModel {
   index?: number; // only for form
   title: string;
@@ -16,7 +14,7 @@ export interface StepModel {
   name: string;
   isFirst?: boolean;
   select?: {
-    type: StepType;
+    isMultiselect: boolean;
     options: SelectOptionModel[];
   };
   input?: {

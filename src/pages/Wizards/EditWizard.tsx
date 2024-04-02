@@ -41,7 +41,7 @@ export function EditWizard() {
             </Button>
             <Button
               variant="outline"
-              type="submit"
+              type="button"
             >
               Cancel
             </Button>
