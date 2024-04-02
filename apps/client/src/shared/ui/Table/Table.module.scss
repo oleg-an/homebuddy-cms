@@ -1,0 +1,95 @@
+@tailwind utilities;
+@import '../../theme/utils';
+
+@mixin table-base {
+  @apply custom-scrollbar mt-6 overflow-x-auto rounded-md border-slate-100 overflow-hidden border block;
+
+  &::-webkit-scrollbar {
+    border-top: 1px solid theme('colors.slate.100');
+  }
+
+  table {
+    @apply w-full border-spacing-0 text-left;
+  }
+
+  thead {
+    tr {
+      @apply bg-deep-blue-25 text-slate-600;
+    }
+  }
+
+  tbody {
+    tr {
+      @apply border-b last:border-b-0 border-slate-100;
+    }
+  }
+}
+
+.table {
+  @include table-base;
+
+  tbody {
+    tr {
+      @apply hover:bg-deep-blue-25 text-[13px] leading-[18px] h-16;
+    }
+
+    td {
+      @apply px-4;
+    }
+  }
+
+  thead {
+    tr {
+      @apply text-[10px] leading-[14px] h-12;
+    }
+
+    th {
+      @apply px-4 font-medium whitespace-pre uppercase;
+    }
+  }
+}
+
+.table-sm {
+  @include table-base;
+
+  thead {
+    tr {
+      @apply text-[10px];
+    }
+
+    th {
+      @apply px-4 py-2 font-medium uppercase;
+    }
+  }
+
+  tbody {
+    tr {
+      @apply text-sm;
+    }
+
+    td {
+      @apply px-4 h-16;
+    }
+  }
+}
+
+.tableVerticalScroll {
+  @apply menu-scrollbar overflow-auto;
+  thead {
+    @apply sticky top-0 z-[1];
+  }
+}
+
+.rowHoverPointer {
+  tbody {
+    tr {
+      @apply cursor-pointer;
+    }
+  }
+}
+
+.disabledTable {
+  tr {
+    @apply text-slate-400 #{!important};
+  }
+}

@@ -1,0 +1,10 @@
+.Toastify__toast {
+  font-family: 'Inter', serif !important;
+  @apply p-0 min-h-full h-14 rounded-md #{!important};
+}
+
+.Toastify__toast-container--top-center.Toastify__toast-container {
+  width: 100%;
+  max-width: 1364px;
+  padding: 0 38px;
+}

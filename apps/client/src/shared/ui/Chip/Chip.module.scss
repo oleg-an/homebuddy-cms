@@ -1,0 +1,18 @@
+.chip {
+  @apply bg-deep-blue-100 text-black text-xs;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+  padding: 2px 6px;
+  border: none;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-weight: 500;
+  gap: 8px;
+  position: relative;
+}
+
+.disabled {
+  @apply bg-deep-blue-50  text-slate-400;
+  pointer-events: none;
+}
