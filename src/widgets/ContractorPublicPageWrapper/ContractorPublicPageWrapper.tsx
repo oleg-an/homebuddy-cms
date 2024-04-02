@@ -7,7 +7,7 @@ export function ContractorPublicPageWrapper({ children }: { children: ReactNode 
         <div className="h-[49px] w-[206px] bg-[url('/assets/contractor-auth-logo.svg')] bg-cover" />
         <div className="mt-57 w-85">{children}</div>
       </div>
-      <div className="w-full bg-[url('/assets/contractor-auth.jpg')] bg-cover bg-right" />
+      <div className="w-full bg-slate-100 bg-cover bg-right" />
     </div>
   );
 }

@@ -8,7 +8,6 @@ import { ErrorBoundary } from 'react-error-boundary';
 import axios from 'axios';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import '@stripe/stripe-js';
 import { ErrorBoundaryFallback } from './ErrorBoundaryFallback';
 import { QueryClientProviderWrapper } from './QueryClientProviderWrapper';
 import { App } from './App';

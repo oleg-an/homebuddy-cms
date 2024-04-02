@@ -9,8 +9,7 @@ export function ContractorAuth() {
   return (
     <ContractorPublicPageWrapper>
       <div>
-        <div className="mb-1 text-base font-medium text-slate-900">&#128075; Welcome</div>
-        <div className="mb-5 text-lg font-semibold text-slate-900">Login as a contractor</div>
+        <div className="mb-2 text-lg font-semibold text-slate-900">Login</div>
         <Login
           apiType="app"
           role={Roles.Contractor}

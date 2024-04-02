@@ -5008,26 +5008,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@growthbook/growthbook-react@npm:0.15.0":
-  version: 0.15.0
-  resolution: "@growthbook/growthbook-react@npm:0.15.0"
-  dependencies:
-    "@growthbook/growthbook": ^0.25.0
-  peerDependencies:
-    react: ^16.8.0-0 || ^17.0.0-0 || ^18.0.0-0
-  checksum: 8a66b4672e5230b34c83dcb997816641b85848be2b47eb83647a234cb04413e70e33840ed3a9b416b46d692284b602c2e7845a872fe06b073f4aea4abefe04ff
-  languageName: node
-  linkType: hard
-
-"@growthbook/growthbook@npm:^0.25.0":
-  version: 0.25.0
-  resolution: "@growthbook/growthbook@npm:0.25.0"
-  dependencies:
-    dom-mutator: ^0.4.0
-  checksum: 669a4ef3e1a34de473a91e5437b09450f37401a9ef3e8a9f0c294150c787d29b7c601fca12540b2d422068bc58aa1f8e86f733293638677ecd28cd977ae4afe5
-  languageName: node
-  linkType: hard
-
 "@headlessui/react@npm:1.7.13":
   version: 1.7.13
   resolution: "@headlessui/react@npm:1.7.13"
@@ -7823,26 +7803,6 @@ __metadata:
     "@types/express": ^4.7.0
     file-system-cache: 2.3.0
   checksum: fabbdc48937fa8b352389e87d12c156b07a1803481467ff4038ca113dfb0d928635c07ec6cde5a0fd06e347f7644540186d7149e13aa5423ad91b22e4ede33b9
-  languageName: node
-  linkType: hard
-
-"@stripe/react-stripe-js@npm:2.1.1":
-  version: 2.1.1
-  resolution: "@stripe/react-stripe-js@npm:2.1.1"
-  dependencies:
-    prop-types: ^15.7.2
-  peerDependencies:
-    "@stripe/stripe-js": ^1.44.1
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: b9c0a2d3f98d757c84698560ba78ca619bdf21f6730157663ceb51396d494f6a2c221eada7dd518bcdde5cf7da242a26be0df385962e231c4bdecb38d9076923
-  languageName: node
-  linkType: hard
-
-"@stripe/stripe-js@npm:1.54.1":
-  version: 1.54.1
-  resolution: "@stripe/stripe-js@npm:1.54.1"
-  checksum: eb54054edea3d3f9a8c18e8442cc05b46f7afbe5bd85863121737f268875d30aab6de16ee84d467853ad9d983bf69f922f45daeee6f13134ca138f7e862c9eb4
   languageName: node
   linkType: hard
 
@@ -11740,7 +11700,6 @@ __metadata:
   dependencies:
     "@emotion/react": 11.10.6
     "@emotion/styled": 11.10.6
-    "@growthbook/growthbook-react": 0.15.0
     "@headlessui/react": 1.7.13
     "@lukemorales/query-key-factory": 1.2.0
     "@mdx-js/react": 1.6.22
@@ -11755,8 +11714,6 @@ __metadata:
     "@storybook/react": 7.6.3
     "@storybook/react-vite": 7.6.3
     "@storybook/testing-library": 0.2.2
-    "@stripe/react-stripe-js": 2.1.1
-    "@stripe/stripe-js": 1.54.1
     "@tanstack/react-query": 4.29.13
     "@tanstack/react-query-devtools": 4.29.13
     "@testing-library/jest-dom": 5.16.5
@@ -13394,13 +13351,6 @@ __metadata:
   dependencies:
     utila: ~0.4
   checksum: ea52fe303f5392e48dea563abef0e6fb3a478b8dbe3c599e99bb5d53981c6c38fc4944e56bb92a8ead6bb989d10b7914722ae11febbd2fd0910e33b9fc4aaa77
-  languageName: node
-  linkType: hard
-
-"dom-mutator@npm:^0.4.0":
-  version: 0.4.0
-  resolution: "dom-mutator@npm:0.4.0"
-  checksum: ffb3b5cf1c708554e0e08d0801e0aa39f89bb5e13263e093e643dbe1fc119d2fe1a866ecca19c07dbaf4e8532959623ef7d94fa88320fa842256b6832a85556c
   languageName: node
   linkType: hard
 
