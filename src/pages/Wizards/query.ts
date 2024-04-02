@@ -2,9 +2,14 @@ import { useQuery } from '@tanstack/react-query';
 import { api } from 'shared/lib/api';
 
 export function useGetWizard({ id }: { id: string }) {
-  // JSON.parse
   return useQuery({
-    queryFn: () => api.get(`/rest/wizards/${id}`),
+    queryFn: () =>
+      api.get<{ steps: string; _id: string }>(`/rest/wizards/${id}`).then((x) => {
+        return {
+          ...x.data,
+          steps: JSON.parse(x.data.steps),
+        };
+      }),
   });
 }
 
