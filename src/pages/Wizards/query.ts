@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
+import { api } from 'shared/lib/api';
 
-import { Wizards } from './mock';
-
-export function useGetWizard({ id }: { id: number }) {
+export function useGetWizard({ id }: { id: string }) {
   return useQuery({
-    queryFn: () => Promise.resolve(Wizards.find((x) => x.id === id)),
+    queryFn: () => api.get(`/rest/wizards/${id}`),
   });
 }

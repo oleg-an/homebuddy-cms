@@ -4,7 +4,7 @@ import { isObject } from 'shared/lib/type-guards';
 
 function getApiKeyHeader() {
   return {
-    'x-apikey': '6ed3abd836dd9aa33f8ea54048d7db8631bb5',
+    'x-apikey': '660c5c7cd34bb0d3c98eba77',
   };
 }
 

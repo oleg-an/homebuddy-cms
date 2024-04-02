@@ -8,9 +8,7 @@ import { EditStep } from './EditStep';
 // getFormDefaultValues(stepsList)
 
 export function EditWizard() {
-  const getWizardQuery = useGetWizard({ id: 1 });
-
-  console.log(getWizardQuery.data);
+  const getWizardQuery = useGetWizard({ id: '660c519253b80d5b00002084' });
 
   const methods = useForm({
     defaultValues: {

@@ -1,0 +1,32 @@
+[
+  {
+    "title": "What do you need help with?",
+    "name": "replace",
+    "select": {
+      "isMultiSelect": false,
+      "options": [
+        [
+          {
+            "title": "Replace existing windows",
+            "value": "replace",
+            "nextStepId": 3
+          },
+          {
+            "title": "Repair existing windows",
+            "value": "repair",
+            "additionalTitle": "Title",
+            "additionalWarning": "Unfortunately, our contractors only...."
+          },
+          {
+            "title": "Not sure",
+            "value": "notSure"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "title": "Why do you want to replace your windows?",
+    "name": "replace"
+  }
+]
