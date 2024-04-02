@@ -18,7 +18,7 @@ export function ContractorLayoutMenu() {
       <div className="flex grow flex-col justify-between">
         <div className="mt-29">
           <ContractorMenuLink
-            iconName="campaign"
+            iconName="quiz"
             title="Wizards"
             href={pageRoutes.app.wizard}
             isSmallSize={!isMenuOpen}
