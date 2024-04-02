@@ -2,7 +2,11 @@ import type { AxiosResponse } from 'axios';
 import axios from 'axios';
 import { isObject } from 'shared/lib/type-guards';
 
-import { getAuthToken } from './token';
+function getApiKeyHeader() {
+  return {
+    'x-apikey': '6ed3abd836dd9aa33f8ea54048d7db8631bb5',
+  };
+}
 
 const isHeaders = (params: unknown): params is { params: { headers?: Record<string, unknown> } } =>
   isObject(params) && 'headers' in params && isObject(params.headers);
@@ -18,7 +22,7 @@ export const api = {
 
     return axios.get<ResponseDataType>(url, {
       headers: {
-        Authorization: `Bearer ${getAuthToken()}`,
+        ...getApiKeyHeader(),
         ...headers,
       },
       ...params,
@@ -27,21 +31,21 @@ export const api = {
   post: <ResponseDataType>(url: string, data: unknown, headers?: Record<string, unknown>) =>
     axios.post<ResponseDataType, AxiosResponse<ResponseDataType>>(url, data, {
       headers: {
-        Authorization: `Bearer ${getAuthToken()}`,
+        ...getApiKeyHeader(),
         ...headers,
       },
     }),
   put: <ResponseDataType>(url: string, data: unknown, headers?: Record<string, unknown>) =>
     axios.put<ResponseDataType, AxiosResponse<ResponseDataType>>(url, data, {
       headers: {
-        Authorization: `Bearer ${getAuthToken()}`,
+        ...getApiKeyHeader(),
         ...headers,
       },
     }),
   delete: <ResponseDataType>(url: string) =>
     axios.delete<ResponseDataType, AxiosResponse<ResponseDataType>>(url, {
       headers: {
-        Authorization: `Bearer ${getAuthToken()}`,
+        ...getApiKeyHeader(),
       },
     }),
 };
