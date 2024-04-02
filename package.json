@@ -22,7 +22,6 @@
     "cspell": "6.31.1",
     "debounce": "1.2.1",
     "eslint-plugin-no-relative-import-paths": "1.5.3",
-    "firebase": "10.10.0",
     "immer": "10.0.2",
     "js-cookie": "3.0.1",
     "path-to-regexp": "6.2.1",
