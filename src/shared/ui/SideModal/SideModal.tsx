@@ -9,7 +9,7 @@ export interface SideModalProps {
 }
 
 export function SideModal({ isLoading, children, isLarge = false }: SideModalProps) {
-  const largeWidth = 'w-224';
+  const largeWidth = 'w-270';
   const defaultWidth = 'w-123';
 
   return (

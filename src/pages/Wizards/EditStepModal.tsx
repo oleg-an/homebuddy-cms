@@ -18,36 +18,35 @@ export function EditStepModal({ step }: EditStepModalProps) {
 
   const onSubmit = methods.handleSubmit((form) => {
     console.log(form);
+    close();
   });
 
   return (
     <SideModal isLarge>
-      <SideModalBody title="Edit step">
-        <FormProvider {...methods}>
+      <FormProvider {...methods}>
+        <SideModalBody title="Edit step">
           <form onSubmit={onSubmit}>
             <EditStepFormControls step={step} />
           </form>
-        </FormProvider>
-      </SideModalBody>
-      <SideModalFooter>
-        <div className="flex justify-end gap-4">
-          <Button
-            type="button"
-            onClick={close}
-            variant="outline"
-          >
-            Close
-          </Button>
-          <Button
-            className="w-full-screen shrink-0"
-            onClick={() => {
-              close();
-            }}
-          >
-            Save
-          </Button>
-        </div>
-      </SideModalFooter>
+        </SideModalBody>
+        <SideModalFooter>
+          <div className="flex justify-end gap-4">
+            <Button
+              type="button"
+              onClick={close}
+              variant="outline"
+            >
+              Close
+            </Button>
+            <Button
+              className="w-full-screen shrink-0"
+              onClick={onSubmit}
+            >
+              Save
+            </Button>
+          </div>
+        </SideModalFooter>
+      </FormProvider>
     </SideModal>
   );
 }
