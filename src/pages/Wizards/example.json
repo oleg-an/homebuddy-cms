@@ -4,8 +4,8 @@
     {
       "id": "1",
       "title": "What do you need help with?",
-      "name": "replace",
       "select": {
+        "fieldName": "replace",
         "isMultiSelect": false,
         "options": [
           [

@@ -14,6 +14,7 @@ export interface StepModel {
   name: string;
   isFirst?: boolean;
   select?: {
+    fieldName: string;
     isMultiselect: boolean;
     options: SelectOptionModel[];
   };
