@@ -8,24 +8,22 @@
         "fieldName": "replace",
         "isMultiSelect": false,
         "options": [
-          [
-            {
-              "title": "Replace existing windows",
-              "value": "replace",
-              "nextStepId": "3",
-              "yesOkButtons": true
-            },
-            {
-              "title": "Repair existing windows",
-              "value": "repair",
-              "additionalTitle": "Title",
-              "additionalWarning": "Unfortunately, our contractors only...."
-            },
-            {
-              "title": "Not sure",
-              "value": "notSure"
-            }
-          ]
+          {
+            "title": "Replace existing windows",
+            "value": "replace",
+            "nextStepId": "3",
+            "yesOkButtons": true
+          },
+          {
+            "title": "Repair existing windows",
+            "value": "repair",
+            "additionalTitle": "Title",
+            "additionalWarning": "Unfortunately, our contractors only...."
+          },
+          {
+            "title": "Not sure",
+            "value": "notSure"
+          }
         ]
       }
     },
