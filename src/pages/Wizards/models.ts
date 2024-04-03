@@ -2,7 +2,7 @@ export interface SelectOptionModel {
   index?: number; // only for form
   title: string;
   value: string;
-  nextStepId?: '3';
+  nextStepId?: string;
   warningMessage?: string;
   yesOkButtons?: boolean;
   imageSrc?: string;
