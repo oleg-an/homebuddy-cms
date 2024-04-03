@@ -6,15 +6,22 @@ import { Table } from 'shared/ui/Table';
 import { uuidv4 } from 'shared/lib/uuidv4';
 
 import { getOptionsTableColumns } from './SelectTableColums';
-import type { StepModel } from './models';
+import type { SelectOptionModel, StepModel } from './models';
 
 interface StepCardProps {
   step: StepModel;
-  index: number;
+  stepIndex: number;
 }
 
-export function EditStep({ step, index }: StepCardProps) {
-  const columns = getOptionsTableColumns();
+function assignIndexToOptions(options: SelectOptionModel[]) {
+  return options.map((option, index) => ({
+    ...option,
+    index,
+  }));
+}
+
+export function EditStep({ step, stepIndex }: StepCardProps) {
+  const columns = getOptionsTableColumns({ stepIndex });
   const options = step.select?.options;
 
   return (
@@ -23,7 +30,7 @@ export function EditStep({ step, index }: StepCardProps) {
         <Input
           className="flex-1"
           title="Title"
-          name={`steps.${index}.title`}
+          name={`steps.${stepIndex}.title`}
         />
         <Button
           iconLeftName="delete"
@@ -43,12 +50,12 @@ export function EditStep({ step, index }: StepCardProps) {
               <Input
                 className="input-sm w-[200px]"
                 title=""
-                name={`steps.${index}.select.fieldName`}
+                name={`steps.${stepIndex}.select.fieldName`}
                 isErrorMessageHidden
               />
               <div className="ml-4 text-sm font-medium">Multiselect</div>
               <div>
-                <SwitcherHookForm name={`steps.${index}.select.isMultiSelect`} />
+                <SwitcherHookForm name={`steps.${stepIndex}.select.isMultiSelect`} />
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -73,7 +80,7 @@ export function EditStep({ step, index }: StepCardProps) {
           <Table
             className="!m-0"
             variant="table-sm"
-            data={options}
+            data={assignIndexToOptions(options)}
             columns={columns}
             rowKey={uuidv4}
           />

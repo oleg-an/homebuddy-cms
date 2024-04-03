@@ -91,7 +91,7 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
             {fields.map((step, index) => (
               <EditStep
                 key={step.id}
-                index={index}
+                stepIndex={index}
                 step={step}
               />
             ))}
