@@ -3,20 +3,34 @@ import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
 import { mock } from 'pages/Wizards/mock';
 import { useGetWizard } from 'pages/Wizards/query';
 import { useParams } from 'react-router-dom';
+import { Loader } from 'shared/ui/Loader';
+import type { WizardModel } from 'pages/Wizards/models';
 
 import { EditStep } from './EditStep';
-
-// getFormDefaultValues(stepsList)
 
 export function EditWizard() {
   const { id } = useParams<{ id: string }>();
   const getWizardQuery = useGetWizard({ id });
 
-  console.log(getWizardQuery.data);
+  if (getWizardQuery.isFetching) {
+    return <Loader className="mt-20 flex justify-center" />;
+  }
 
+  if (getWizardQuery.isSuccess) {
+    return <EditWizardBody wizard={getWizardQuery.data} />;
+  }
+
+  return <></>;
+}
+
+interface EditWizardBodyProps {
+  wizard: WizardModel;
+}
+
+export function EditWizardBody({ wizard }: EditWizardBodyProps) {
   const methods = useForm({
     defaultValues: {
-      steps: mock,
+      steps: wizard.steps,
     },
   });
 

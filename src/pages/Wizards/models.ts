@@ -9,7 +9,6 @@ export interface SelectOptionModel {
 }
 
 export interface StepModel {
-  id: number;
   title: string;
   name: string;
   isFirst?: boolean;
@@ -24,6 +23,6 @@ export interface StepModel {
 }
 
 export interface WizardModel {
-  id: number;
+  _id: string;
   steps: StepModel[];
 }

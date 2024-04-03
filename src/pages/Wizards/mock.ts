@@ -2,7 +2,6 @@ import type { StepModel } from './models';
 
 export const mock: StepModel[] = [
   {
-    id: 1,
     title: 'Are you considering any changes to your layout, such as relocating your appliances or sink?',
     name: 'replace',
     select: {
@@ -25,7 +24,6 @@ export const mock: StepModel[] = [
     },
   },
   {
-    id: 2,
     title: 'Why do you want to replace your windows?',
     name: 'replace',
   },
