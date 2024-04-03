@@ -4,7 +4,8 @@ type PageRoutesType = {
 
 export const pageRoutes = {
   app: {
-    wizard: '/wizards',
+    wizardList: '/wizards',
+    wizard: '/wizards/:id',
     auth: '/auth',
     recovery: '/recovery',
     newPassword: '/new-password',

@@ -6,8 +6,6 @@ declare global {
       REACT_APP_SENTRY_DSN: string | undefined;
       REACT_APP_STRIPE_PUB_KEY: string;
       REACT_APP_API_BASE_URL: string | undefined;
-      REACT_APP_GROWTHBOOK_CLIENT_KEY: string;
-      REACT_APP_PLAYWRIGHT_RUNNING: string | undefined;
     }
   }
 

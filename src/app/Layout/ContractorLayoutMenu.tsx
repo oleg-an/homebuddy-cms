@@ -20,7 +20,7 @@ export function ContractorLayoutMenu() {
           <ContractorMenuLink
             iconName="quiz"
             title="Wizards"
-            href={pageRoutes.app.wizard}
+            href={pageRoutes.app.wizardList}
             isSmallSize={!isMenuOpen}
           />
         </div>

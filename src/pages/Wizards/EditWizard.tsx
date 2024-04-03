@@ -2,13 +2,15 @@ import { Button } from 'shared/ui/Button';
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
 import { mock } from 'pages/Wizards/mock';
 import { useGetWizard } from 'pages/Wizards/query';
+import { useParams } from 'react-router-dom';
 
 import { EditStep } from './EditStep';
 
 // getFormDefaultValues(stepsList)
 
 export function EditWizard() {
-  const getWizardQuery = useGetWizard({ id: '660c713953b80d5b0000246d' });
+  const { id } = useParams<{ id: string }>();
+  const getWizardQuery = useGetWizard({ id });
 
   console.log(getWizardQuery.data);
 

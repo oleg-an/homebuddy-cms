@@ -4,6 +4,7 @@ import { pageRoutes } from 'shared/routes';
 import { Loader } from 'shared/ui/Loader';
 import { Error404 } from 'pages/Error404';
 import { EditWizard } from 'pages/Wizards/EditWizard';
+import { WizardList } from 'pages/Wizards/WizardList';
 
 import { AppLayout } from './Layout/AppLayout';
 
@@ -15,11 +16,14 @@ export function App() {
           <Route path={pageRoutes.app.wizard}>
             <EditWizard />
           </Route>
+          <Route path={pageRoutes.app.wizardList}>
+            <WizardList />
+          </Route>
           <Route
             exact
             path={pageRoutes.app.main}
           >
-            <Redirect to={pageRoutes.app.wizard} />
+            <Redirect to={pageRoutes.app.wizardList} />
           </Route>
           <Route
             path={pageRoutes.app.notFound}
