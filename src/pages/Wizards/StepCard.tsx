@@ -4,10 +4,11 @@ import { MaterialIcon } from 'shared/ui/MaterialIcon';
 
 interface StepCardProps {
   step: StepModel;
-  onSaveClick: () => void;
+  onEditClick: () => void;
+  onDeleteClick: (stepId: string) => void;
 }
 
-export function StepCard({ step, onSaveClick }: StepCardProps) {
+export function StepCard({ step, onEditClick, onDeleteClick }: StepCardProps) {
   return (
     <>
       <div className="mb-4 w-[500px] rounded-md border-[2px] border-slate-100 p-4">
@@ -18,7 +19,7 @@ export function StepCard({ step, onSaveClick }: StepCardProps) {
               className="w-[10px]"
               size="small"
               variant="outline"
-              onClick={onSaveClick}
+              onClick={onEditClick}
             >
               <MaterialIcon className="text-base">edit</MaterialIcon>
             </Button>
@@ -26,6 +27,7 @@ export function StepCard({ step, onSaveClick }: StepCardProps) {
               className="w-[10px]"
               size="small"
               variant="outline-danger"
+              onClick={() => onDeleteClick(step.id)}
             >
               <MaterialIcon className="text-base">delete</MaterialIcon>
             </Button>

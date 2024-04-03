@@ -46,8 +46,11 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
             <StepCard
               key={step.id}
               step={step}
-              onSaveClick={() => {
+              onEditClick={() => {
                 open(<EditStepModal step={step} />);
+              }}
+              onDeleteClick={(stepId) => {
+                setSteps(steps.filter((x) => x.id !== stepId));
               }}
             />
           ))}
