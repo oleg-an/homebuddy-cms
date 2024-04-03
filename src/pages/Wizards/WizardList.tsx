@@ -7,6 +7,7 @@ import type { WizardModel } from 'pages/Wizards/models';
 import { useHistory } from 'react-router-dom';
 import { pageRoutes } from 'shared/routes';
 import { pathToUrl } from 'shared/lib/router';
+import { Button } from 'shared/ui/Button';
 
 function getColumns(): Column<WizardModel>[] {
   return [
@@ -30,15 +31,25 @@ export function WizardList() {
 
   if (getWizardListQuery.isSuccess) {
     return (
-      <Table
-        data={getWizardListQuery.data}
-        columns={columns}
-        rowKey={uuidv4}
-        hasRowCursorPointer
-        onRowClick={({ _id }) => {
-          history.push(pathToUrl(pageRoutes.app.wizard, { id: _id }));
-        }}
-      />
+      <>
+        <div className="flex justify-end">
+          <Button
+            variant="outline"
+            iconLeftName="plus"
+          >
+            Create new wizard
+          </Button>
+        </div>
+        <Table
+          data={getWizardListQuery.data}
+          columns={columns}
+          rowKey={uuidv4}
+          hasRowCursorPointer
+          onRowClick={({ _id }) => {
+            history.push(pathToUrl(pageRoutes.app.wizard, { id: _id }));
+          }}
+        />
+      </>
     );
   }
 
