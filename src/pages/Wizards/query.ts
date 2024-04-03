@@ -2,13 +2,25 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { api } from 'shared/lib/api';
 import type { StepModel, WizardModel } from 'pages/Wizards/models';
 
+import wizardMock from './example.json';
+
 const getWizardKey = ['getWizard'];
 const getWizardList = ['getWizardList'];
 
+/*
 export function useGetWizard({ id }: { id: string }) {
   return useQuery({
     queryKey: getWizardKey,
     queryFn: () => api.get<{ steps: StepModel[]; _id: string }>(`/rest/wizards/${id}`).then((x) => x.data),
+  });
+}
+ */
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function useGetWizard({ id }: { id: string }) {
+  return useQuery({
+    queryKey: getWizardKey,
+    queryFn: () => Promise.resolve(wizardMock as WizardModel),
   });
 }
 
