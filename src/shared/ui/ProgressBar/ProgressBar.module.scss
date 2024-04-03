@@ -1,0 +1,16 @@
+.root {
+  min-height: 56px;
+}
+
+.line {
+  width: 200px;
+  height: 1px;
+  margin-top: 15px;
+  margin-left: 0px;
+
+  @apply bg-deep-blue-500;
+
+  &.isDisabled {
+    @apply bg-deep-blue-200;
+  }
+}

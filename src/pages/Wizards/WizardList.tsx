@@ -15,7 +15,7 @@ function getColumns(): Column<WizardModel>[] {
       label: 'Id',
       key: 'id',
       headerCell: ({ value }) => <th>{value}</th>,
-      columnCell: ({ row: { _id } }) => <td>{_id}</td>,
+      columnCell: ({ row }) => <td>{row._id}</td>,
     },
   ];
 }
@@ -35,7 +35,7 @@ export function WizardList() {
         <div className="flex justify-end">
           <Button
             variant="outline"
-            iconLeftName="plus"
+            iconLeftName="add"
           >
             Create new wizard
           </Button>
