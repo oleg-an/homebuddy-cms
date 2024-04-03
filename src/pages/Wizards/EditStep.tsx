@@ -24,9 +24,6 @@ export function EditStep({ step, index }: StepCardProps) {
           className="flex-1"
           title="Title"
           name={`steps.${index}.title`}
-          registerOptions={{
-            required: 'This field is required',
-          }}
         />
         <Button
           iconLeftName="delete"

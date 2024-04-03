@@ -47,9 +47,6 @@ export function getOptionsTableColumns(): Column<SelectOptionModel>[] {
             title=""
             name="title"
             isErrorMessageHidden
-            registerOptions={{
-              required: 'This field is required',
-            }}
           />
         </td>
       ),
@@ -65,9 +62,6 @@ export function getOptionsTableColumns(): Column<SelectOptionModel>[] {
             title=""
             name="value"
             isErrorMessageHidden
-            registerOptions={{
-              required: 'This field is required',
-            }}
           />
         </td>
       ),
