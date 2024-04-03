@@ -7,6 +7,8 @@ import React, { useState } from 'react';
 import { StepCard } from 'pages/Wizards/StepCard';
 import { uuidv4 } from 'shared/lib/uuidv4';
 import { ReactSortable } from 'react-sortablejs';
+import { EditStepModal } from 'pages/Wizards/EditStepModal';
+import { useModalsActions } from 'shared/ui/SideModal';
 
 export function EditWizard() {
   const { id } = useParams<{ id: string }>();
@@ -30,10 +32,11 @@ interface EditWizardBodyProps {
 export function EditWizardBody({ wizard }: EditWizardBodyProps) {
   // const updateWizardQuery = useUpdateWizard();
   const [steps, setSteps] = useState<StepModel[]>(wizard.steps);
+  const { open } = useModalsActions();
 
   return (
     <div className="flex justify-between">
-      <div className="w-full gap-5">
+      <div className="flex-1">
         <ReactSortable
           animation={200}
           list={steps}
@@ -43,6 +46,9 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
             <StepCard
               key={step.id}
               step={step}
+              onSaveClick={() => {
+                open(<EditStepModal step={step} />);
+              }}
             />
           ))}
         </ReactSortable>
