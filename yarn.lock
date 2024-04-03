@@ -9073,6 +9073,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/sortablejs@npm:1.15.8":
+  version: 1.15.8
+  resolution: "@types/sortablejs@npm:1.15.8"
+  checksum: 7866c134a6c81cfc438af52b7910a3efdd89e49c5d196f91a90decea2644c40ab24bbae929d32abb70093ef00a5a6211fe6eb956b618478bc0c81a1dcc59e887
+  languageName: node
+  linkType: hard
+
 "@types/stack-utils@npm:^2.0.0":
   version: 2.0.1
   resolution: "@types/stack-utils@npm:2.0.1"
@@ -11728,6 +11735,7 @@ __metadata:
     "@types/react-datepicker": 4.10.0
     "@types/react-dom": 17.0.19
     "@types/react-router-dom": 5.3.3
+    "@types/sortablejs": 1.15.8
     "@types/styled-components": 5.1.26
     "@typescript-eslint/eslint-plugin": 5.57.0
     "@typescript-eslint/parser": 5.57.0

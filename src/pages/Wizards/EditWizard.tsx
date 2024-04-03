@@ -1,12 +1,11 @@
 import { Button } from 'shared/ui/Button';
-import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
 import { useGetWizard } from 'pages/Wizards/query';
 import { useParams } from 'react-router-dom';
 import { Loader } from 'shared/ui/Loader';
-import type { WizardModel } from 'pages/Wizards/models';
-import React from 'react';
-
-import { EditStep } from './EditStep';
+import type { StepModel, WizardModel } from 'pages/Wizards/models';
+import React, { useState } from 'react';
+import { StepCard } from 'pages/Wizards/StepCard';
+import { uuidv4 } from 'shared/lib/uuidv4';
 
 export function EditWizard() {
   const { id } = useParams<{ id: string }>();
@@ -29,63 +28,43 @@ interface EditWizardBodyProps {
 
 export function EditWizardBody({ wizard }: EditWizardBodyProps) {
   // const updateWizardQuery = useUpdateWizard();
-  const methods = useForm({
-    defaultValues: {
-      steps: wizard.steps,
-    },
-  });
-
-  // , append, remove
-  const { fields } = useFieldArray({
-    control: methods.control,
-    name: 'steps',
-  });
-
-  const onSubmit = methods.handleSubmit((form) => {
-    console.log(form);
-  });
+  const [steps, setSteps] = useState<StepModel[]>(wizard.steps);
 
   return (
-    <>
-      <FormProvider {...methods}>
-        <form onSubmit={onSubmit}>
-          <div className="mb-4 flex justify-between gap-2">
-            <div className="flex gap-2">
-              <Button
-                variant="primary"
-                type="submit"
-              >
-                Update wizard
-              </Button>
-              <Button
-                variant="outline"
-                type="button"
-              >
-                Cancel
-              </Button>
-            </div>
-            <Button
-              iconLeftName="add"
-              variant="outline"
-              type="button"
-              onClick={() => {
-                // create new id step
-              }}
-            >
-              Add step
-            </Button>
-          </div>
-          <div className="mr-8 flex w-full flex-col gap-5">
-            {fields.map((step, index) => (
-              <EditStep
-                key={step.id}
-                stepIndex={index}
-                step={step}
-              />
-            ))}
-          </div>
-        </form>
-      </FormProvider>
-    </>
+    <div className="flex justify-between">
+      <div className="mr-8 flex w-full flex-col gap-5">
+        {steps.map((step) => (
+          <StepCard
+            key={step.id}
+            step={step}
+          />
+        ))}
+      </div>
+      <div className="fixed right-8 mb-4 flex justify-between gap-5">
+        <Button
+          variant="primary"
+          type="submit"
+        >
+          Update wizard
+        </Button>
+        <Button
+          iconLeftName="add"
+          variant="outline"
+          type="button"
+          onClick={() => {
+            // create new id step
+            setSteps([
+              ...steps,
+              {
+                title: '',
+                id: uuidv4(),
+              },
+            ]);
+          }}
+        >
+          Add step
+        </Button>
+      </div>
+    </div>
   );
 }
