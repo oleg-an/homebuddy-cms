@@ -1,6 +1,5 @@
 import { Button } from 'shared/ui/Button';
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
-import { mock } from 'pages/Wizards/mock';
 import { useGetWizard } from 'pages/Wizards/query';
 import { useParams } from 'react-router-dom';
 import { Loader } from 'shared/ui/Loader';
@@ -93,7 +92,7 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
                 <EditStep
                   key={step.id}
                   index={index}
-                  step={mock[index]}
+                  step={wizard.steps[index]}
                 />
               ))}
             </div>
