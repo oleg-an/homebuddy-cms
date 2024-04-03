@@ -4,17 +4,8 @@ import { useTitleStoreTitle } from 'shared/lib/store';
 import { usePageTitle } from 'shared/lib/title';
 
 const titles: Record<string, string> = {
-  contractors: 'Contractors',
-  campaigns: 'Campaigns',
-  leads: 'Leads',
-  appointments: 'Appointments',
-  invoices: 'Invoices',
-  billing: 'Billing',
-  myAccount: 'My account',
-  groups: 'Groups',
-  overlapping: 'Overlapping',
-  sales: 'Sales',
-  faq: 'FAQs',
+  wizardList: 'Wizards',
+  wizard: 'Wizard details',
 };
 
 const getHeader = (pathname: string) => {

@@ -17,7 +17,7 @@ export function ContractorMenuLink({
 }) {
   const [isHovered, setIsHovered] = useState(false);
 
-  const isSelected = href === useLocation().pathname;
+  const isSelected = useLocation().pathname.includes(href);
   const linkClass = classNames(
     'mb-2 select-none text-base flex items-center py-2 rounded-md hover:bg-slate-50 hover:text-slate-900',
     isSelected ? 'font-semibold text-slate-900 bg-slate-50' : 'font-medium text-slate-600',

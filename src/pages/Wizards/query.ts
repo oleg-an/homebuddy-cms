@@ -2,8 +2,12 @@ import { useQuery } from '@tanstack/react-query';
 import { api } from 'shared/lib/api';
 import type { StepModel } from 'pages/Wizards/models';
 
+const getWizardKey = ['getWizard'];
+const getWizardList = ['getWizardList'];
+
 export function useGetWizard({ id }: { id: string }) {
   return useQuery({
+    queryKey: getWizardKey,
     queryFn: () =>
       api
         .get<{ steps: string; _id: string }>(`/rest/wizards/${id}`)
@@ -19,6 +23,7 @@ export function useGetWizard({ id }: { id: string }) {
 
 export function useGetWizardList() {
   return useQuery({
+    queryKey: getWizardList,
     queryFn: () =>
       api
         .get<{ steps: string; _id: string }[]>(`/rest/wizards`)
