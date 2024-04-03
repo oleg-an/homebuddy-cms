@@ -6,6 +6,7 @@ import type { StepModel, WizardModel } from 'pages/Wizards/models';
 import React, { useState } from 'react';
 import { StepCard } from 'pages/Wizards/StepCard';
 import { uuidv4 } from 'shared/lib/uuidv4';
+import { ReactSortable } from 'react-sortablejs';
 
 export function EditWizard() {
   const { id } = useParams<{ id: string }>();
@@ -32,13 +33,19 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
 
   return (
     <div className="flex justify-between">
-      <div className="mr-8 flex w-full flex-col gap-5">
-        {steps.map((step) => (
-          <StepCard
-            key={step.id}
-            step={step}
-          />
-        ))}
+      <div className="w-full gap-5">
+        <ReactSortable
+          animation={200}
+          list={steps}
+          setList={setSteps}
+        >
+          {steps.map((step) => (
+            <StepCard
+              key={step.id}
+              step={step}
+            />
+          ))}
+        </ReactSortable>
       </div>
       <div className="fixed right-8 mb-4 flex justify-between gap-5">
         <Button

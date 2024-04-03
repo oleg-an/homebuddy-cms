@@ -4,7 +4,7 @@ import { MaterialIcon } from 'shared/ui/MaterialIcon';
 
 export function StepCard({ step }: { step: StepModel }) {
   return (
-    <div className="h-[150px] w-[700px] rounded-md border-[2px] border-slate-100 p-4">
+    <div className="mb-8 h-[150px] w-[700px] rounded-md border-[2px] border-slate-100 p-4">
       <div className="flex justify-between gap-4">
         <div className="text-lg font-medium">{step.title}</div>
         <div className="flex gap-2">

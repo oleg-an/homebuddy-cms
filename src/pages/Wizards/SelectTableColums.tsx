@@ -6,7 +6,7 @@ import { Button } from 'shared/ui/Button';
 import { noop } from 'shared/lib/functions';
 import { Switcher } from 'shared/ui/Switcher';
 
-export function getOptionsTableColumns({ stepIndex }: { stepIndex: number }): Column<SelectOptionModel>[] {
+export function getOptionsTableColumns(): Column<SelectOptionModel>[] {
   return [
     {
       label: 'Icon',
@@ -45,7 +45,7 @@ export function getOptionsTableColumns({ stepIndex }: { stepIndex: number }): Co
           <Input
             className="input-sm"
             title=""
-            name={`steps.${stepIndex}.select.options.${row.index}.title`}
+            name={`select.options.${row.index}.title`}
             isErrorMessageHidden
           />
         </td>
@@ -60,7 +60,7 @@ export function getOptionsTableColumns({ stepIndex }: { stepIndex: number }): Co
           <Input
             className="input-sm"
             title=""
-            name={`steps.${stepIndex}.select.options.${row.index}.value`}
+            name={`select.options.${row.index}.value`}
             isErrorMessageHidden
           />
         </td>
@@ -75,7 +75,7 @@ export function getOptionsTableColumns({ stepIndex }: { stepIndex: number }): Co
           <Input
             className="input-sm"
             title=""
-            name={`steps.${stepIndex}.select.options.${row.index}.warningMessage`}
+            name={`select.options.${row.index}.warningMessage`}
           />
         </td>
       ),
@@ -87,7 +87,7 @@ export function getOptionsTableColumns({ stepIndex }: { stepIndex: number }): Co
       columnCell: ({ row }) => (
         <td className="text-center">
           <Switcher
-            name={`steps.${stepIndex}.select.options.${row.index}.yesOkButtons`}
+            name={`select.options.${row.index}.yesOkButtons`}
             onChange={noop}
           />
         </td>

@@ -11,7 +11,6 @@ import type { SelectOptionModel, StepModel } from './models';
 
 interface StepCardProps {
   step: StepModel;
-  stepIndex: number;
 }
 
 function assignIndexToOptions(options: SelectOptionModel[]) {
@@ -21,8 +20,8 @@ function assignIndexToOptions(options: SelectOptionModel[]) {
   }));
 }
 
-export function EditStep({ step, stepIndex }: StepCardProps) {
-  const columns = getOptionsTableColumns({ stepIndex });
+export function EditStep({ step }: StepCardProps) {
+  const columns = getOptionsTableColumns();
   const options = step.select?.options;
 
   const methods = useForm({
@@ -68,7 +67,7 @@ export function EditStep({ step, stepIndex }: StepCardProps) {
                   />
                   <div className="ml-4 text-sm font-medium">Multiselect</div>
                   <div>
-                    <SwitcherHookForm name={`steps.${stepIndex}.select.isMultiSelect`} />
+                    <SwitcherHookForm name="select.isMultiSelect" />
                   </div>
                 </div>
                 <div className="flex items-center gap-2">

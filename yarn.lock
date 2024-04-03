@@ -11793,6 +11793,7 @@ __metadata:
     react-use: 17.4.0
     sass: 1.60.0
     serve: 12.0.1
+    sortablejs: 1.15.2
     storybook: 7.6.3
     styled-components: 5.3.9
     tailwindcss: 3.3.2
@@ -25122,6 +25123,13 @@ __metadata:
     ip: ^2.0.0
     smart-buffer: ^4.2.0
   checksum: 259d9e3e8e1c9809a7f5c32238c3d4d2a36b39b83851d0f573bfde5f21c4b1288417ce1af06af1452569cd1eb0841169afd4998f0e04ba04656f6b7f0e46d748
+  languageName: node
+  linkType: hard
+
+"sortablejs@npm:1.15.2":
+  version: 1.15.2
+  resolution: "sortablejs@npm:1.15.2"
+  checksum: 36b20b144ff5fd2d078aed0eba3349aaef5691e4830ba9a28d69ca023d4583ca15e5eacb3c09c1d9924675388400d1219def1121e514badfb0f41463cc844da7
   languageName: node
   linkType: hard
 
