@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { api } from 'shared/lib/api';
-import type { StepModel } from 'pages/Wizards/models';
+import type { StepModel, WizardModel } from 'pages/Wizards/models';
 
 const getWizardKey = ['getWizard'];
 const getWizardList = ['getWizardList'];
@@ -19,11 +19,20 @@ export function useGetWizardList() {
   });
 }
 
-/*
-export function updateWizard({ id }: { id: string }) {
+export function useUpdateWizard(wizard: WizardModel) {
   return useMutation({
-    mutationFn: () => api.post(),
+    mutationFn: () => api.put(`/rest/wizards`, wizard),
   });
 }
 
- */
+export function useCreateWizard() {
+  return useMutation({
+    mutationFn: () => api.post(`/rest/wizards`, {}),
+  });
+}
+
+export function useDeleteWizard({ id }: { id: string }) {
+  return useMutation({
+    mutationFn: () => api.post(`/rest/wizards/${id}`, {}),
+  });
+}

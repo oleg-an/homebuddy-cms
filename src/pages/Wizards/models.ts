@@ -9,7 +9,7 @@ export interface SelectOptionModel {
 }
 
 export interface StepModel {
-  id: string; //
+  id: string;
   title: string;
   name: string;
   isFirst?: boolean;

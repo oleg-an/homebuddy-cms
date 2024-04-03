@@ -1,5 +1,6 @@
 [
   {
+    "id": "1",
     "title": "What do you need help with?",
     "name": "replace",
     "select": {
@@ -26,6 +27,7 @@
     }
   },
   {
+    "id": "2",
     "title": "Why do you want to replace your windows?",
     "name": "replace"
   }

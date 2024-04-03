@@ -42,7 +42,7 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
     name: 'steps',
   });
 
-  const onSubmit = methods.handleSubmit(async (form) => {
+  const onSubmit = methods.handleSubmit((form) => {
     console.log(form);
   });
 
@@ -86,16 +86,14 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
               Add step
             </Button>
           </div>
-          <div>
-            <div className="mr-8 flex w-full flex-col gap-5">
-              {fields.map((step, index) => (
-                <EditStep
-                  key={step.id}
-                  index={index}
-                  step={wizard.steps[index]}
-                />
-              ))}
-            </div>
+          <div className="mr-8 flex w-full flex-col gap-5">
+            {fields.map((step, index) => (
+              <EditStep
+                key={step.id}
+                index={index}
+                step={step}
+              />
+            ))}
           </div>
         </form>
       </FormProvider>

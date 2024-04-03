@@ -15,6 +15,9 @@ interface StepCardProps {
 }
 
 export function EditStep({ step, index }: StepCardProps) {
+  const columns = getOptionsTableColumns();
+  const options = step.select?.options;
+
   return (
     <div className="shrink-0 gap-4 overflow-auto rounded-md border-[2px] border-slate-100 p-5">
       <div className="flex gap-4">
@@ -36,7 +39,7 @@ export function EditStep({ step, index }: StepCardProps) {
         </Button>
       </div>
       <Divider className="!my-5" />
-      {step.select?.options ? (
+      {options ? (
         <>
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -80,8 +83,8 @@ export function EditStep({ step, index }: StepCardProps) {
           <Table
             className="!m-0"
             variant="table-sm"
-            data={step.select.options}
-            columns={getOptionsTableColumns()}
+            data={options}
+            columns={columns}
             rowKey={uuidv4}
           />
         </>
