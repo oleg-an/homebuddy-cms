@@ -5,7 +5,7 @@ import { Divider } from 'shared/ui/Divider';
 import { Table } from 'shared/ui/Table';
 import { uuidv4 } from 'shared/lib/uuidv4';
 
-import { getOptionsTableColumns } from './SelectTableColums';
+import { getOptionsTableColumns } from './EditStepFormTableColums';
 import type { SelectOptionModel, StepModel } from './models';
 
 interface StepCardProps {

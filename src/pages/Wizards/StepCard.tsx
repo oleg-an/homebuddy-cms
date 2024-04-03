@@ -10,7 +10,7 @@ interface StepCardProps {
 export function StepCard({ step, onSaveClick }: StepCardProps) {
   return (
     <>
-      <div className="mb-8 w-[500px] rounded-md border-[2px] border-slate-100 p-4">
+      <div className="mb-4 w-[500px] rounded-md border-[2px] border-slate-100 p-4">
         <div className="flex justify-between gap-4">
           <div className="truncate font-medium">{step.title}</div>
           <div className="flex gap-2">
