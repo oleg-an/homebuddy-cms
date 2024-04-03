@@ -68,7 +68,7 @@ export function getOptionsTableColumns(): Column<SelectOptionModel>[] {
     },
     {
       label: 'Warning message',
-      key: 'value',
+      key: 'warning',
       headerCell: ({ value }) => <th>{value}</th>,
       columnCell: ({ row }) => (
         <td>
@@ -82,7 +82,7 @@ export function getOptionsTableColumns(): Column<SelectOptionModel>[] {
     },
     {
       label: 'Yes / Ok',
-      key: 'value',
+      key: 'yesOk',
       headerCell: ({ value }) => <th className="text-center">{value}</th>,
       columnCell: ({ row }) => (
         <td className="text-center">
@@ -95,7 +95,7 @@ export function getOptionsTableColumns(): Column<SelectOptionModel>[] {
     },
     {
       label: 'Delete',
-      key: 'value',
+      key: 'delete',
       headerCell: ({ value }) => <th className="text-center">{value}</th>,
       columnCell: () => (
         <td className="text-center">
