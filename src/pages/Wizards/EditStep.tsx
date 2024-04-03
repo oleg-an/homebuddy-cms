@@ -1,7 +1,6 @@
 import { Input } from 'shared/ui/Input';
 import { Button } from 'shared/ui/Button';
-import { noop } from 'shared/lib/functions';
-import { Switcher } from 'shared/ui/Switcher';
+import { SwitcherHookForm } from 'shared/ui/Switcher';
 import { Divider } from 'shared/ui/Divider';
 import { Table } from 'shared/ui/Table';
 import { uuidv4 } from 'shared/lib/uuidv4';
@@ -47,18 +46,12 @@ export function EditStep({ step, index }: StepCardProps) {
               <Input
                 className="input-sm w-[200px]"
                 title=""
-                name="field-name"
+                name={`steps.${index}.select.fieldName`}
                 isErrorMessageHidden
-                registerOptions={{
-                  required: 'This field is required',
-                }}
               />
               <div className="ml-4 text-sm font-medium">Multiselect</div>
               <div>
-                <Switcher
-                  name="isMultiSelect"
-                  onChange={noop}
-                />
+                <SwitcherHookForm name={`steps.${index}.select.isMultiSelect`} />
               </div>
             </div>
             <div className="flex items-center gap-2">
