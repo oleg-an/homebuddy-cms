@@ -4,7 +4,7 @@ export interface SelectOptionModel {
   value: string;
   nextStepId?: '3';
   warningMessage?: string;
-  warningYesNoMessage?: string;
+  yesOkButtons?: boolean;
   imageSrc?: string;
 }
 
@@ -15,7 +15,7 @@ export interface StepModel {
   isFirst?: boolean;
   select?: {
     fieldName: string;
-    isMultiselect: boolean;
+    isMultiselect?: boolean;
     options: SelectOptionModel[];
   };
   input?: {

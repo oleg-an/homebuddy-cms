@@ -12,7 +12,8 @@
             {
               "title": "Replace existing windows",
               "value": "replace",
-              "nextStepId": "3"
+              "nextStepId": "3",
+              "yesOkButtons": true
             },
             {
               "title": "Repair existing windows",

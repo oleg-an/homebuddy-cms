@@ -29,6 +29,7 @@ interface EditWizardBodyProps {
 }
 
 export function EditWizardBody({ wizard }: EditWizardBodyProps) {
+  // const updateWizardQuery = useUpdateWizard();
   const [stepNumber, setStepNumber] = useState(1);
   const methods = useForm({
     defaultValues: {
