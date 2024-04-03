@@ -4,8 +4,7 @@ import { useGetWizard } from 'pages/Wizards/query';
 import { useParams } from 'react-router-dom';
 import { Loader } from 'shared/ui/Loader';
 import type { WizardModel } from 'pages/Wizards/models';
-import React, { useState } from 'react';
-import { ProgressBar } from 'shared/ui/ProgressBar';
+import React from 'react';
 
 import { EditStep } from './EditStep';
 
@@ -30,7 +29,6 @@ interface EditWizardBodyProps {
 
 export function EditWizardBody({ wizard }: EditWizardBodyProps) {
   // const updateWizardQuery = useUpdateWizard();
-  const [stepNumber, setStepNumber] = useState(1);
   const methods = useForm({
     defaultValues: {
       steps: wizard.steps,
@@ -49,16 +47,6 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
 
   return (
     <>
-      <div className="flex justify-center">
-        <ProgressBar
-          className="mb-14"
-          items={[
-            { text: '1', title: 'Create steps', id: '1' },
-            { text: '2', title: 'Connect steps', id: '2' },
-          ]}
-          stepNumber={stepNumber}
-        />
-      </div>
       <FormProvider {...methods}>
         <form onSubmit={onSubmit}>
           <div className="mb-4 flex justify-between gap-2">
