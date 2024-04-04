@@ -1,3 +1,6 @@
+import { WizardBuilder } from 'features/edit-wizard';
+import React from 'react';
+
 export function CreateWizard() {
-  return <div>vsdvds</div>;
+  return <WizardBuilder />;
 }

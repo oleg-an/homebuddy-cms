@@ -40,9 +40,9 @@ export function useGetWizardList() {
   });
 }
 
-export function useUpdateWizard(wizard: WizardModel) {
+export function useUpdateWizard(id: string) {
   return useMutation({
-    mutationFn: () => api.put(`/rest/wizards`, wizard),
+    mutationFn: (data) => api.put(`/rest/wizards/${id}`, data),
   });
 }
 

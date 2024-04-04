@@ -24,6 +24,25 @@ export function EditStepFormControls(props: StepCardProps) {
   const [step, setStep] = useState<StepModel>(props.step);
   const columns = getOptionsTableColumns();
 
+  const addSelectHandler = () => {
+    console.log(step);
+    setStep({
+      ...step,
+      select: {
+        options: [{ title: '', value: '' }],
+        fieldName: '',
+        isMultiselect: false,
+      },
+    });
+  };
+
+  const deleteSelectHandler = () => {
+    setStep({
+      ...step,
+      select: undefined,
+    });
+  };
+
   const addOptionHandler = () => {
     if (!step.select) {
       return;
@@ -44,27 +63,8 @@ export function EditStepFormControls(props: StepCardProps) {
   };
 
   const deleteOptionHandler = () => {};
-
-  const addSelectHandler = () => {
-    setStep({
-      ...step,
-      select: {
-        options: [],
-        fieldName: '',
-        isMultiselect: false,
-      },
-    });
-  };
-
   const addYesNoHandlerHandler = () => {};
   const addYesNoNotSureHandler = () => {};
-
-  const deleteSelectHandler = () => {
-    setStep({
-      ...step,
-      select: undefined,
-    });
-  };
 
   return (
     <>

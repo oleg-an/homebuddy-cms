@@ -25,7 +25,5 @@ interface EditWizardBodyProps {
 }
 
 export function EditWizardBody({ wizard }: EditWizardBodyProps) {
-  // const updateWizardQuery = useUpdateWizard();
-
   return <WizardBuilder wizard={wizard} />;
 }

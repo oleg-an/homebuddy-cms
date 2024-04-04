@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import type { StepModel, WizardModel } from 'entities/wizard';
+import { useCreateWizard } from 'entities/wizard';
+import { useUpdateWizard } from 'entities/wizard';
 import { useModalsActions } from 'shared/ui/SideModal';
 import { uuidv4 } from 'shared/lib/uuidv4';
 import { ReactSortable } from 'react-sortablejs';
@@ -9,11 +11,12 @@ import { EditStepModal } from './EditStepModal';
 import { StepCard } from './StepCard';
 
 interface WizardBuilderProps {
-  wizard: WizardModel;
+  wizard?: WizardModel;
 }
 
 export function WizardBuilder({ wizard }: WizardBuilderProps) {
-  const [steps, setSteps] = useState<StepModel[]>(wizard.steps);
+  const updateWizardQuery = !wizard ? useCreateWizard() : useUpdateWizard(wizard._id);
+  const [steps, setSteps] = useState<StepModel[]>(wizard ? wizard.steps : []);
   const { open } = useModalsActions();
 
   const editStepHandler = (step: StepModel) => {
@@ -72,8 +75,9 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
           variant="primary"
           type="submit"
           onClick={saveWizardHandler}
+          disabled={!steps.length}
         >
-          Update wizard
+          {!wizard ? 'Create wizard' : 'Update wizard'}
         </Button>
         <Button
           iconLeftName="add"
