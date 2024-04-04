@@ -22,17 +22,8 @@ export function getStepCardSelectColumns({
         <td>
           <Select
             isSmall
-            title="vsdv"
-            options={[
-              {
-                text: '2',
-                id: '1',
-              },
-              {
-                text: '25',
-                id: '23423',
-              },
-            ]}
+            title=""
+            options={[]}
             onChange={(id) => {
               console.log(id);
             }}
