@@ -7,10 +7,11 @@ import { EditStepFormControls } from './EditStepFormControls';
 
 interface EditStepModalProps {
   step: StepModel;
+  onEdit: (step: StepModel) => void;
 }
 
 // добавить событие в модалку
-export function EditStepModal({ step }: EditStepModalProps) {
+export function EditStepModal({ step, onEdit }: EditStepModalProps) {
   const { close } = useModalsActions();
   const methods = useForm({
     defaultValues: {
@@ -19,8 +20,8 @@ export function EditStepModal({ step }: EditStepModalProps) {
     },
   });
 
-  const onSubmit = methods.handleSubmit((form) => {
-    console.log(form);
+  const onSubmit = methods.handleSubmit(({ title, select }) => {
+    onEdit({ title, select, id: step.id });
     close();
   });
 
@@ -42,7 +43,7 @@ export function EditStepModal({ step }: EditStepModalProps) {
               Close
             </Button>
             <Button
-              className="w-full-screen shrink-0"
+              className="w-full-screen w-[150px] shrink-0"
               onClick={onSubmit}
             >
               Next

@@ -47,7 +47,14 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
               key={step.id}
               step={step}
               onEditClick={() => {
-                open(<EditStepModal step={step} />);
+                open(
+                  <EditStepModal
+                    step={step}
+                    onEdit={(step) => {
+                      setSteps(steps.map((value) => (value.id === step.id ? step : value)));
+                    }}
+                  />
+                );
               }}
               onDeleteClick={(stepId) => {
                 setSteps(steps.filter((x) => x.id !== stepId));
