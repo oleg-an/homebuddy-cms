@@ -3,7 +3,8 @@ import { Button } from 'shared/ui/Button';
 import { MaterialIcon } from 'shared/ui/MaterialIcon';
 import { Table } from 'shared/ui/Table';
 import { uuidv4 } from 'shared/lib/uuidv4';
-import { getStepCardSelectColumns } from 'features/edit-wizard/ui/getStepCardSelectColumns';
+
+import { getStepCardSelectColumns } from './getStepCardSelectColumns';
 
 interface StepCardProps {
   step: StepModel;
@@ -14,7 +15,7 @@ interface StepCardProps {
 export function StepCard({ step, onEditClick, onDeleteClick }: StepCardProps) {
   return (
     <>
-      <div className="mb-4 w-[500px] rounded-md border-[2px] border-slate-100 p-4">
+      <div className="mb-4 w-[700px] rounded-md border-[2px] border-slate-100 p-6">
         <div className="flex justify-between gap-4">
           <div className="truncate font-medium">{step.title}</div>
           <div className="flex gap-2">
