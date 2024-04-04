@@ -6,9 +6,10 @@ import type { StepModel, WizardModel } from 'pages/Wizards/models';
 import React, { useState } from 'react';
 import { StepCard } from 'pages/Wizards/StepCard';
 import { ReactSortable } from 'react-sortablejs';
-import { EditStepModal } from 'pages/Wizards/EditStepModal';
 import { useModalsActions } from 'shared/ui/SideModal';
 import { uuidv4 } from 'shared/lib/uuidv4';
+
+import { EditStepModal } from './EditStep';
 
 export function EditWizard() {
   const { id } = useParams<{ id: string }>();
@@ -64,6 +65,7 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
 
   const onSaveWizardHandler = () => {
     console.log(steps);
+    // update wizard
   };
 
   return (
