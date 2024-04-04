@@ -5,7 +5,7 @@
       "id": "1",
       "title": "What do you need help with?",
       "select": {
-        "fieldName": "replace",
+        "fieldName": "workType",
         "isMultiSelect": false,
         "options": [
           {

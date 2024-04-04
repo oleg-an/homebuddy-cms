@@ -54,7 +54,7 @@ export function getOptionsTableColumns(): Column<SelectOptionModel>[] {
     {
       label: 'Field value',
       key: 'value',
-      headerCell: ({ value }) => <th>{value}</th>,
+      headerCell: ({ value }) => <th className="w-[150px]">{value}</th>,
       columnCell: ({ row }) => (
         <td>
           <Input

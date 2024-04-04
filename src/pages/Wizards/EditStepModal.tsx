@@ -1,18 +1,21 @@
 import { SideModal, SideModalBody, SideModalFooter, useModalsActions } from 'shared/ui/SideModal';
-import { EditStepFormControls } from 'pages/Wizards/EditStepFormControls';
 import { FormProvider, useForm } from 'react-hook-form';
 import type { StepModel } from 'pages/Wizards/models';
 import { Button } from 'shared/ui/Button';
+
+import { EditStepFormControls } from './EditStepFormControls';
 
 interface EditStepModalProps {
   step: StepModel;
 }
 
+// добавить событие в модалку
 export function EditStepModal({ step }: EditStepModalProps) {
   const { close } = useModalsActions();
   const methods = useForm({
     defaultValues: {
-      ...step,
+      title: step.title,
+      select: step.select,
     },
   });
 
@@ -42,7 +45,7 @@ export function EditStepModal({ step }: EditStepModalProps) {
               className="w-full-screen shrink-0"
               onClick={onSubmit}
             >
-              Save
+              Next
             </Button>
           </div>
         </SideModalFooter>

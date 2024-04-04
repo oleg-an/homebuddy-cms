@@ -4,9 +4,9 @@ import { SwitcherHookForm } from 'shared/ui/Switcher';
 import { Divider } from 'shared/ui/Divider';
 import { Table } from 'shared/ui/Table';
 import { uuidv4 } from 'shared/lib/uuidv4';
+import type { SelectOptionModel, StepModel } from 'pages/Wizards/models';
 
-import { getOptionsTableColumns } from './EditStepFormTableColums';
-import type { SelectOptionModel, StepModel } from './models';
+import { getOptionsTableColumns } from './SelectColums';
 
 interface StepCardProps {
   step: StepModel;
