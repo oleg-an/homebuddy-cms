@@ -15,7 +15,7 @@ interface WizardBuilderProps {
 }
 
 export function WizardBuilder({ wizard }: WizardBuilderProps) {
-  const updateWizardQuery = !wizard ? useCreateWizard() : useUpdateWizard(wizard._id);
+  const saveWizardQuery = !wizard ? useCreateWizard() : useUpdateWizard(wizard._id);
   const [steps, setSteps] = useState<StepModel[]>(wizard ? wizard.steps : []);
   const { open } = useModalsActions();
 
