@@ -5,7 +5,8 @@ import { MaterialIcon } from 'shared/ui/MaterialIcon';
 import { Button } from 'shared/ui/Button';
 import { noop } from 'shared/lib/functions';
 import { SwitcherHookForm } from 'shared/ui/Switcher';
-import { getRequiredValidation } from 'features/edit-wizard/ui/utils';
+
+import { getRequiredValidation } from './utils';
 
 export function getOptionsTableColumns(): Column<SelectOptionModel>[] {
   return [

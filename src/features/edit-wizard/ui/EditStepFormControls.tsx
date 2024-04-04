@@ -6,9 +6,9 @@ import { Table } from 'shared/ui/Table';
 import { uuidv4 } from 'shared/lib/uuidv4';
 import type { SelectOptionModel, StepModel } from 'entities/wizard';
 import { useState } from 'react';
-import { getRequiredValidation } from 'features/edit-wizard/ui/utils';
 
-import { getOptionsTableColumns } from './SelectColums';
+import { getRequiredValidation } from './utils';
+import { getOptionsTableColumns } from './getOptionsTableColumns';
 
 interface StepCardProps {
   step: StepModel;
