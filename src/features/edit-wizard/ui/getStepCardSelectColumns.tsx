@@ -4,13 +4,13 @@ import type { SelectOptionModel } from 'entities/wizard';
 export function getStepCardSelectColumns(): Column<SelectOptionModel>[] {
   return [
     {
-      label: 'Option name',
-      key: 'optionName',
+      label: 'Title',
+      key: 'title',
       headerCell: ({ value }) => <th>{value}</th>,
       columnCell: ({ row }) => <td>{row.title}</td>,
     },
     {
-      label: 'Redirect to step',
+      label: 'Redirect to',
       key: 'redirect',
       headerCell: ({ value }) => <th>{value}</th>,
       columnCell: ({ row }) => <td>...</td>,
