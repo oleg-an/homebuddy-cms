@@ -70,7 +70,7 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
           ))}
         </ReactSortable>
       </div>
-      <div className="fixed right-8 mb-4 flex justify-between gap-5">
+      <div className="fixed right-8 mb-4 flex flex-col gap-4">
         <Button
           variant="primary"
           type="submit"

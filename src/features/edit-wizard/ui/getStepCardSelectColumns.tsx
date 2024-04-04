@@ -1,7 +1,11 @@
 import type { Column } from 'shared/ui/Table';
 import type { SelectOptionModel } from 'entities/wizard';
 
-export function getStepCardSelectColumns(): Column<SelectOptionModel>[] {
+export function getStepCardSelectColumns({
+  onOptionClick,
+}: {
+  onOptionClick: () => void;
+}): Column<SelectOptionModel>[] {
   return [
     {
       label: 'Title',

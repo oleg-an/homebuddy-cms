@@ -43,7 +43,9 @@ export function StepCard({ step, onEditClick, onDeleteClick }: StepCardProps) {
               className="!mt-0"
               variant="table-sm"
               data={step.select.options}
-              columns={getStepCardSelectColumns()}
+              columns={getStepCardSelectColumns({
+                onOptionClick: () => {},
+              })}
               rowKey={uuidv4}
             />
           </div>
