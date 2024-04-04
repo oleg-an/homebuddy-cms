@@ -6,12 +6,13 @@ import { Button } from 'shared/ui/Button';
 import { EditStepFormControls } from './EditStepFormControls';
 
 interface EditStepModalProps {
+  title: string;
   step: StepModel;
   onEdit: (step: StepModel) => void;
 }
 
 // добавить событие в модалку
-export function EditStepModal({ step, onEdit }: EditStepModalProps) {
+export function EditStepModal({ step, onEdit, title }: EditStepModalProps) {
   const { close } = useModalsActions();
   const methods = useForm({
     defaultValues: {
@@ -28,7 +29,7 @@ export function EditStepModal({ step, onEdit }: EditStepModalProps) {
   return (
     <SideModal isLarge>
       <FormProvider {...methods}>
-        <SideModalBody title="Edit step">
+        <SideModalBody title={title}>
           <form onSubmit={onSubmit}>
             <EditStepFormControls step={step} />
           </form>

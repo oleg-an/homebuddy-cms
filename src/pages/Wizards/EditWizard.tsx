@@ -5,10 +5,10 @@ import { Loader } from 'shared/ui/Loader';
 import type { StepModel, WizardModel } from 'pages/Wizards/models';
 import React, { useState } from 'react';
 import { StepCard } from 'pages/Wizards/StepCard';
-import { uuidv4 } from 'shared/lib/uuidv4';
 import { ReactSortable } from 'react-sortablejs';
 import { EditStepModal } from 'pages/Wizards/EditStepModal';
 import { useModalsActions } from 'shared/ui/SideModal';
+import { uuidv4 } from 'shared/lib/uuidv4';
 
 export function EditWizard() {
   const { id } = useParams<{ id: string }>();
@@ -49,6 +49,7 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
               onEditClick={() => {
                 open(
                   <EditStepModal
+                    title="Edit step"
                     step={step}
                     onEdit={(step) => {
                       setSteps(steps.map((value) => (value.id === step.id ? step : value)));
@@ -75,14 +76,15 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
           variant="outline"
           type="button"
           onClick={() => {
-            // create new id step
-            setSteps([
-              ...steps,
-              {
-                title: '',
-                id: uuidv4(),
-              },
-            ]);
+            open(
+              <EditStepModal
+                title="Edit step"
+                step={{ title: '', id: uuidv4() }}
+                onEdit={(step) => {
+                  setSteps([...steps, step]);
+                }}
+              />
+            );
           }}
         >
           Add step
