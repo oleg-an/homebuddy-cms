@@ -6,6 +6,7 @@ import { Table } from 'shared/ui/Table';
 import { uuidv4 } from 'shared/lib/uuidv4';
 import type { SelectOptionModel, StepModel } from 'entities/wizard';
 import { useState } from 'react';
+import { getRequiredValidation } from 'features/edit-wizard/ui/utils';
 
 import { getOptionsTableColumns } from './SelectColums';
 
@@ -72,6 +73,7 @@ export function EditStepFormControls(props: StepCardProps) {
         className="flex-1"
         title="Title"
         name="title"
+        registerOptions={getRequiredValidation()}
       />
       <Divider />
       {step.select ? (
@@ -84,6 +86,7 @@ export function EditStepFormControls(props: StepCardProps) {
                 title=""
                 name="select.fieldName"
                 isErrorMessageHidden
+                registerOptions={getRequiredValidation()}
               />
               <div className="ml-4 text-sm font-medium">Multiselect</div>
               <SwitcherHookForm name="select.isMultiSelect" />

@@ -5,6 +5,7 @@ import { MaterialIcon } from 'shared/ui/MaterialIcon';
 import { Button } from 'shared/ui/Button';
 import { noop } from 'shared/lib/functions';
 import { SwitcherHookForm } from 'shared/ui/Switcher';
+import { getRequiredValidation } from 'features/edit-wizard/ui/utils';
 
 export function getOptionsTableColumns(): Column<SelectOptionModel>[] {
   return [
@@ -47,6 +48,7 @@ export function getOptionsTableColumns(): Column<SelectOptionModel>[] {
             title=""
             name={`select.options.${row.index}.title`}
             isErrorMessageHidden
+            registerOptions={getRequiredValidation()}
           />
         </td>
       ),
@@ -62,6 +64,7 @@ export function getOptionsTableColumns(): Column<SelectOptionModel>[] {
             title=""
             name={`select.options.${row.index}.value`}
             isErrorMessageHidden
+            registerOptions={getRequiredValidation()}
           />
         </td>
       ),
