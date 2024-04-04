@@ -28,7 +28,14 @@ export function getStepCardSelectColumns({
                 text: '2',
                 id: '1',
               },
+              {
+                text: '25',
+                id: '23423',
+              },
             ]}
+            onChange={(id) => {
+              console.log(id);
+            }}
           />
         </td>
       ),
