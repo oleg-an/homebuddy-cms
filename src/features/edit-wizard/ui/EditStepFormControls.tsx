@@ -68,7 +68,7 @@ export function EditStepFormControls(props: StepCardProps) {
   const addYesNoNotSureHandler = () => {};
 
   return (
-    <>
+    <div className="pb-5">
       <Input
         className="flex-1"
         title="Title"
@@ -148,6 +148,6 @@ export function EditStepFormControls(props: StepCardProps) {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

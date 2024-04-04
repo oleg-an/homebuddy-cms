@@ -56,6 +56,7 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
     <div className="flex justify-between">
       <div className="flex-1">
         <ReactSortable
+          handle=".handle"
           animation={200}
           list={steps}
           setList={setSteps}
