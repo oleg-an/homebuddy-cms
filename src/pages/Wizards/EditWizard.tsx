@@ -34,6 +34,38 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
   const [steps, setSteps] = useState<StepModel[]>(wizard.steps);
   const { open } = useModalsActions();
 
+  const onEditStepHandler = (step: StepModel) => {
+    open(
+      <EditStepModal
+        title="Edit step"
+        step={step}
+        onEdit={(step) => {
+          setSteps(steps.map((value) => (value.id === step.id ? step : value)));
+        }}
+      />
+    );
+  };
+
+  const onCreateStepHandler = () => {
+    open(
+      <EditStepModal
+        title="Create step"
+        step={{ title: '', id: uuidv4() }}
+        onEdit={(step) => {
+          setSteps([...steps, step]);
+        }}
+      />
+    );
+  };
+
+  const onDeleteStepHandler = (stepId: string) => {
+    setSteps(steps.filter((x) => x.id !== stepId));
+  };
+
+  const onSaveWizardHandler = () => {
+    console.log(steps);
+  };
+
   return (
     <div className="flex justify-between">
       <div className="flex-1">
@@ -46,20 +78,8 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
             <StepCard
               key={step.id}
               step={step}
-              onEditClick={() => {
-                open(
-                  <EditStepModal
-                    title="Edit step"
-                    step={step}
-                    onEdit={(step) => {
-                      setSteps(steps.map((value) => (value.id === step.id ? step : value)));
-                    }}
-                  />
-                );
-              }}
-              onDeleteClick={(stepId) => {
-                setSteps(steps.filter((x) => x.id !== stepId));
-              }}
+              onEditClick={() => onEditStepHandler(step)}
+              onDeleteClick={onDeleteStepHandler}
             />
           ))}
         </ReactSortable>
@@ -68,6 +88,7 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
         <Button
           variant="primary"
           type="submit"
+          onClick={onSaveWizardHandler}
         >
           Update wizard
         </Button>
@@ -75,17 +96,7 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
           iconLeftName="add"
           variant="outline"
           type="button"
-          onClick={() => {
-            open(
-              <EditStepModal
-                title="Edit step"
-                step={{ title: '', id: uuidv4() }}
-                onEdit={(step) => {
-                  setSteps([...steps, step]);
-                }}
-              />
-            );
-          }}
+          onClick={onCreateStepHandler}
         >
           Add step
         </Button>
