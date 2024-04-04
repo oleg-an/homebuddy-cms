@@ -1,4 +1,4 @@
-import type { StepModel } from 'pages/Wizards/models';
+import type { StepModel } from 'entities/wizard';
 import { Button } from 'shared/ui/Button';
 import { MaterialIcon } from 'shared/ui/MaterialIcon';
 

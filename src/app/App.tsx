@@ -5,6 +5,7 @@ import { Loader } from 'shared/ui/Loader';
 import { Error404 } from 'pages/Error404';
 import { EditWizard } from 'pages/Wizards/EditWizard';
 import { WizardList } from 'pages/Wizards/WizardList';
+import { CreateWizard } from 'pages/Wizards/CreateWizard';
 
 import { AppLayout } from './Layout/AppLayout';
 
@@ -13,6 +14,9 @@ export function App() {
     <AppLayout>
       <Suspense fallback={<Loader className="mt-20 flex justify-center" />}>
         <Switch>
+          <Route path={pageRoutes.app.newWizard}>
+            <CreateWizard />
+          </Route>
           <Route path={pageRoutes.app.wizard}>
             <EditWizard />
           </Route>

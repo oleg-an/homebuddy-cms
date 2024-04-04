@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { api } from 'shared/lib/api';
-import type { WizardModel } from 'pages/Wizards/models';
+
+import type { WizardModel } from '../model';
 
 import wizardMock from './example.json';
 
@@ -20,7 +21,7 @@ export function useGetWizard({ id }: { id: string }) {
 export function useGetWizard({ id }: { id: string }) {
   return useQuery({
     queryKey: getWizardKey,
-    queryFn: () => Promise.resolve(wizardMock),
+    queryFn: () => Promise.resolve(wizardMock as WizardModel),
   });
 }
 
@@ -35,7 +36,7 @@ export function useGetWizardList() {
 export function useGetWizardList() {
   return useQuery({
     queryKey: getWizardList,
-    queryFn: () => Promise.resolve([wizardMock]),
+    queryFn: () => Promise.resolve([wizardMock as WizardModel]),
   });
 }
 

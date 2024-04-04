@@ -1,6 +1,6 @@
 import { SideModal, SideModalBody, SideModalFooter, useModalsActions } from 'shared/ui/SideModal';
 import { FormProvider, useForm } from 'react-hook-form';
-import type { StepModel } from 'pages/Wizards/models';
+import type { StepModel } from 'entities/wizard';
 import { Button } from 'shared/ui/Button';
 
 import { EditStepFormControls } from './EditStepFormControls';

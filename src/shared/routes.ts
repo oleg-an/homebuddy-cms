@@ -6,6 +6,7 @@ export const pageRoutes = {
   app: {
     wizardList: '/wizards',
     wizard: '/wizards/:id',
+    newWizard: '/wizards/new',
     auth: '/auth',
     recovery: '/recovery',
     newPassword: '/new-password',

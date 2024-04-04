@@ -4,7 +4,8 @@ import { SwitcherHookForm } from 'shared/ui/Switcher';
 import { Divider } from 'shared/ui/Divider';
 import { Table } from 'shared/ui/Table';
 import { uuidv4 } from 'shared/lib/uuidv4';
-import type { SelectOptionModel, StepModel } from 'pages/Wizards/models';
+import type { SelectOptionModel, StepModel } from 'entities/wizard';
+import { useState } from 'react';
 
 import { getOptionsTableColumns } from './SelectColums';
 
@@ -19,17 +20,51 @@ function assignIndexToOptions(options: SelectOptionModel[]) {
   }));
 }
 
-export function EditStepFormControls({ step }: StepCardProps) {
+export function EditStepFormControls(props: StepCardProps) {
+  const [step, setStep] = useState<StepModel>(props.step);
   const columns = getOptionsTableColumns();
-  const options = step.select?.options;
 
-  const addOptionHandler = () => {};
+  const addOptionHandler = () => {
+    if (!step.select) {
+      return;
+    }
+    setStep({
+      ...step,
+      select: {
+        ...step.select,
+        options: [
+          ...step.select.options,
+          {
+            title: '',
+            value: '',
+          },
+        ],
+      },
+    });
+  };
 
   const deleteOptionHandler = () => {};
 
-  const addSelectHandler = () => {};
+  const addSelectHandler = () => {
+    setStep({
+      ...step,
+      select: {
+        options: [],
+        fieldName: '',
+        isMultiselect: false,
+      },
+    });
+  };
+
   const addYesNoHandlerHandler = () => {};
   const addYesNoNotSureHandler = () => {};
+
+  const deleteSelectHandler = () => {
+    setStep({
+      ...step,
+      select: undefined,
+    });
+  };
 
   return (
     <>
@@ -39,7 +74,7 @@ export function EditStepFormControls({ step }: StepCardProps) {
         name="title"
       />
       <Divider />
-      {options ? (
+      {step.select ? (
         <>
           <div className="mb-5 flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -51,24 +86,24 @@ export function EditStepFormControls({ step }: StepCardProps) {
                 isErrorMessageHidden
               />
               <div className="ml-4 text-sm font-medium">Multiselect</div>
-              <div>
-                <SwitcherHookForm name="select.isMultiSelect" />
-              </div>
+              <SwitcherHookForm name="select.isMultiSelect" />
             </div>
             <div className="flex items-center gap-2">
               <Button
-                size="small"
+                size="medium"
                 variant="outline"
                 type="button"
                 iconLeftName="add"
+                onClick={addOptionHandler}
               >
                 Add option
               </Button>
               <Button
-                size="small"
+                size="medium"
                 variant="outline-danger"
                 type="button"
                 iconLeftName="delete"
+                onClick={deleteSelectHandler}
               >
                 Delete select
               </Button>
@@ -77,7 +112,7 @@ export function EditStepFormControls({ step }: StepCardProps) {
           <Table
             className="!m-0"
             variant="table-sm"
-            data={assignIndexToOptions(options)}
+            data={assignIndexToOptions(step.select.options)}
             columns={columns}
             rowKey={uuidv4}
           />
@@ -86,23 +121,24 @@ export function EditStepFormControls({ step }: StepCardProps) {
         <div className="flex items-center justify-end">
           <div className="flex gap-2">
             <Button
-              size="small"
+              size="medium"
               variant="outline"
               type="button"
             >
               Yes / No
             </Button>
             <Button
-              size="small"
+              size="medium"
               variant="outline"
               type="button"
             >
               Yes / No / No sure
             </Button>
             <Button
-              size="small"
+              size="medium"
               variant="outline"
               type="button"
+              onClick={addSelectHandler}
             >
               Select
             </Button>

@@ -1,9 +1,9 @@
-import { useGetWizardList } from 'pages/Wizards/query';
+import { useGetWizardList } from 'entities/wizard';
 import { Loader } from 'shared/ui/Loader';
 import type { Column } from 'shared/ui/Table';
 import { Table } from 'shared/ui/Table';
 import { uuidv4 } from 'shared/lib/uuidv4';
-import type { WizardModel } from 'pages/Wizards/models';
+import type { WizardModel } from 'entities/wizard';
 import { useHistory } from 'react-router-dom';
 import { pageRoutes } from 'shared/routes';
 import { pathToUrl } from 'shared/lib/router';
@@ -36,6 +36,9 @@ export function WizardList() {
           <Button
             variant="outline"
             iconLeftName="add"
+            onClick={() => {
+              history.push(pageRoutes.app.newWizard);
+            }}
           >
             Create new wizard
           </Button>

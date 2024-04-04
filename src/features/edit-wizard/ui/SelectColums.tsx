@@ -1,5 +1,5 @@
 import type { Column } from 'shared/ui/Table';
-import type { SelectOptionModel } from 'pages/Wizards/models';
+import type { SelectOptionModel } from 'entities/wizard';
 import { Input } from 'shared/ui/Input';
 import { MaterialIcon } from 'shared/ui/MaterialIcon';
 import { Button } from 'shared/ui/Button';
