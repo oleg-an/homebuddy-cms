@@ -1,5 +1,5 @@
 {
-  "name": "cms",
+  "name": "homebuddy-cms",
   "version": "0.1.0",
   "private": true,
   "sideEffects": [
@@ -61,13 +61,11 @@
     "prettier:fix": "npm run prettier -- --write",
     "check": "npm run prettier && npm run lint && npm run check:spell",
     "check:ci": "npm run prettier && npm run lint:ci && npm run check:spell && npm run check:package",
-    "check:env:prod": "check-env API_BASE_URL STRIPE_PUB_KEY SENTRY_DSN GROWTHBOOK_CLIENT_KEY",
-    "check:env:stage": "check-env API_BASE_URL STRIPE_PUB_KEY GROWTHBOOK_CLIENT_KEY",
+    "check:env:prod": "check-env API_BASE_URL SENTRY_DSN",
+    "check:env:stage": "check-env API_BASE_URL",
     "check:package": "npx npmPkgJsonLint .",
     "check:spell": "cspell \"src/**\"",
     "format": "npm run prettier:fix && npm run lint:fix",
-    "prepare": "husky install",
-    "postinstall": "husky install",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build"
   },
@@ -136,7 +134,6 @@
     "eslint-plugin-testing-library": "5.11.0",
     "eslint-plugin-unused-imports": "2.0.0",
     "esm": "3.2.25",
-    "husky": "8.0.3",
     "identity-obj-proxy": "3.0.0",
     "jest": "29.5.0",
     "jest-environment-jsdom": "29.5.0",
