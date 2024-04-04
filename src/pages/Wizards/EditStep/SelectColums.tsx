@@ -4,7 +4,7 @@ import { Input } from 'shared/ui/Input';
 import { MaterialIcon } from 'shared/ui/MaterialIcon';
 import { Button } from 'shared/ui/Button';
 import { noop } from 'shared/lib/functions';
-import { Switcher } from 'shared/ui/Switcher';
+import { SwitcherHookForm } from 'shared/ui/Switcher';
 
 export function getOptionsTableColumns(): Column<SelectOptionModel>[] {
   return [
@@ -86,10 +86,7 @@ export function getOptionsTableColumns(): Column<SelectOptionModel>[] {
       headerCell: ({ value }) => <th className="text-center">{value}</th>,
       columnCell: ({ row }) => (
         <td className="text-center">
-          <Switcher
-            name={`select.options.${row.index}.yesOkButtons`}
-            onChange={noop}
-          />
+          <SwitcherHookForm name={`select.options.${row.index}.yesOkButtons`} />
         </td>
       ),
     },

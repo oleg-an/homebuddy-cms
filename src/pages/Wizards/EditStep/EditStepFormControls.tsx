@@ -23,6 +23,14 @@ export function EditStepFormControls({ step }: StepCardProps) {
   const columns = getOptionsTableColumns();
   const options = step.select?.options;
 
+  const addOptionHandler = () => {};
+
+  const deleteOptionHandler = () => {};
+
+  const addSelectHandler = () => {};
+  const addYesNoHandlerHandler = () => {};
+  const addYesNoNotSureHandler = () => {};
+
   return (
     <>
       <Input

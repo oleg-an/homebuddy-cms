@@ -35,7 +35,7 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
   const [steps, setSteps] = useState<StepModel[]>(wizard.steps);
   const { open } = useModalsActions();
 
-  const onEditStepHandler = (step: StepModel) => {
+  const editStepHandler = (step: StepModel) => {
     open(
       <EditStepModal
         title="Edit step"
@@ -47,7 +47,7 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
     );
   };
 
-  const onCreateStepHandler = () => {
+  const createStepHandler = () => {
     open(
       <EditStepModal
         title="Create step"
@@ -59,11 +59,11 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
     );
   };
 
-  const onDeleteStepHandler = (stepId: string) => {
+  const deleteStepHandler = (stepId: string) => {
     setSteps(steps.filter((x) => x.id !== stepId));
   };
 
-  const onSaveWizardHandler = () => {
+  const saveWizardHandler = () => {
     console.log(steps);
     // update wizard
   };
@@ -80,8 +80,8 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
             <StepCard
               key={step.id}
               step={step}
-              onEditClick={() => onEditStepHandler(step)}
-              onDeleteClick={onDeleteStepHandler}
+              onEditClick={() => editStepHandler(step)}
+              onDeleteClick={deleteStepHandler}
             />
           ))}
         </ReactSortable>
@@ -90,7 +90,7 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
         <Button
           variant="primary"
           type="submit"
-          onClick={onSaveWizardHandler}
+          onClick={saveWizardHandler}
         >
           Update wizard
         </Button>
@@ -98,7 +98,7 @@ export function EditWizardBody({ wizard }: EditWizardBodyProps) {
           iconLeftName="add"
           variant="outline"
           type="button"
-          onClick={onCreateStepHandler}
+          onClick={createStepHandler}
         >
           Add step
         </Button>
