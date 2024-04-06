@@ -36,7 +36,7 @@ export function ModalDialog({ children, isOpen, onClose, title, subtitle, classN
           <div className="fixed inset-0 bg-slate-900/60" />
         </Transition.Child>
         <div className="fixed inset-0 overflow-y-auto">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+          <div className="absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"

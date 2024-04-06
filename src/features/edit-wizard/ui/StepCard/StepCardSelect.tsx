@@ -3,6 +3,10 @@ import { uuidv4 } from 'shared/lib/uuidv4';
 import type { StepSelectOptionModel, StepModel } from 'entities/wizard';
 import { type Option, Select } from 'shared/ui/Select';
 import { useState } from 'react';
+import { useHidable } from 'shared/lib/hooks';
+import { Button } from 'shared/ui/Button';
+import { MaterialIcon } from 'shared/ui/MaterialIcon';
+import { ModalDialog } from 'shared/ui/ModalDialog';
 
 const notSelectedStepOption = {
   id: 'notSelected',
@@ -25,21 +29,46 @@ interface StepsSelectProps {
 
 function StepsSelect({ selectOptions, onChange, stepSelect }: StepsSelectProps) {
   const [selectedOptionId, setSelectedOptionId] = useState(stepSelect.redirectStepId || notSelectedStepOption.id);
+  const editDialog = useHidable();
+  const title = stepSelect.redirectStepId ? selectOptions.find((x) => x.id)?.text : selectOptions[0].text;
 
   return (
-    <Select
-      wrapperClass="inline-block"
-      className="w-[250px]"
-      dropdownClassName="text-left"
-      selectedOptionId={selectedOptionId}
-      isSmall
-      title=""
-      options={selectOptions}
-      onChange={(id) => {
-        setSelectedOptionId(id);
-        onChange(id);
-      }}
-    />
+    <div className="inline-block w-[250px]">
+      {editDialog.isShown && (
+        <ModalDialog
+          className="w-[600px]"
+          isOpen={editDialog.isShown}
+          onClose={editDialog.hide}
+          title="Redirect to"
+        >
+          <Select
+            className="mt-4 w-full"
+            dropdownClassName="text-left"
+            selectedOptionId={selectedOptionId}
+            isSmall
+            title=""
+            options={selectOptions}
+            onChange={(id) => {
+              setSelectedOptionId(id);
+              onChange(id);
+            }}
+          />
+        </ModalDialog>
+      )}
+      <div className="flex items-center justify-end gap-2">
+        <div>{title}</div>
+        <Button
+          size="small"
+          variant="outline"
+          className="w-[30px]"
+          onClick={() => {
+            editDialog.show();
+          }}
+        >
+          <MaterialIcon className="text-base">edit</MaterialIcon>
+        </Button>
+      </div>
+    </div>
   );
 }
 
