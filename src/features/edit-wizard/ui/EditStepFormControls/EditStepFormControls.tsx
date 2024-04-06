@@ -7,7 +7,8 @@ import { uuidv4 } from 'shared/lib/uuidv4';
 import type { SelectOptionModel, StepModel } from 'entities/wizard';
 import { useState } from 'react';
 
-import { getRequiredValidation } from './utils';
+import { getRequiredValidation } from '../utils';
+
 import { getOptionsTableColumns } from './getOptionsTableColumns';
 
 interface StepCardProps {
