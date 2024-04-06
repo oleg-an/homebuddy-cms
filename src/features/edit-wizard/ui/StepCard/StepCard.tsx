@@ -39,10 +39,10 @@ export function StepCard({ step, steps, onEditClick, onDeleteClick, onStepModifi
   };
 
   return (
-    <div className="mb-4 flex w-[700px] justify-between gap-4 rounded-md border-[2px] border-slate-100 p-6">
-      <div className="flex-1">
+    <div className="mb-4 w-[700px] gap-4 rounded-md border-[2px] border-slate-100 p-6">
+      <div className="flex justify-between">
+        <div className="truncate font-medium">{step.title}</div>
         <div className="flex justify-between gap-4">
-          <div className="truncate font-medium">{step.title}</div>
           <div className="flex gap-2">
             <Button
               className="w-[10px]"
@@ -61,18 +61,16 @@ export function StepCard({ step, steps, onEditClick, onDeleteClick, onStepModifi
               <MaterialIcon className="text-base">delete</MaterialIcon>
             </Button>
           </div>
+          <MaterialIcon className="handle mt-1 cursor-pointer text-slate-700">open_with</MaterialIcon>
         </div>
-        {step.select && (
-          <StepCardSelectOptions
-            options={step.select.options}
-            steps={steps.filter(({ id }) => id !== step.id)}
-            redirectToStepClick={redirectToStepClickHandler}
-          />
-        )}
       </div>
-      <div>
-        <MaterialIcon className="handle mt-1 cursor-pointer text-slate-700">open_with</MaterialIcon>
-      </div>
+      {step.select && (
+        <StepCardSelectOptions
+          options={step.select.options}
+          steps={steps.filter(({ id }) => id !== step.id)}
+          redirectToStepClick={redirectToStepClickHandler}
+        />
+      )}
     </div>
   );
 }

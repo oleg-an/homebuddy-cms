@@ -27,16 +27,14 @@ export function FormControls(props: StepCardProps) {
   const columns = getOptionsTableColumns();
 
   const addSelectHandler = () => {
-    /*
     setStep({
       ...step,
       select: {
-        options: [{ title: '', value: '', index }],
+        options: [{ title: '', value: '' }],
         fieldName: '',
         isMultiselect: false,
       },
     });
-     */
   };
 
   const deleteSelectHandler = () => {
@@ -47,7 +45,6 @@ export function FormControls(props: StepCardProps) {
   };
 
   const addOptionHandler = () => {
-    /*
     if (!step.select) {
       return;
     }
@@ -64,7 +61,6 @@ export function FormControls(props: StepCardProps) {
         ],
       },
     });
-    */
   };
 
   const deleteOptionHandler = () => {};
