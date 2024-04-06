@@ -30,7 +30,7 @@ interface StepsSelectProps {
 function StepsSelect({ selectOptions, onChange, stepSelect }: StepsSelectProps) {
   const [selectedOptionId, setSelectedOptionId] = useState(stepSelect.redirectStepId || notSelectedStepOption.id);
   const editDialog = useHidable();
-  const title = stepSelect.redirectStepId ? selectOptions.find((x) => x.id)?.text : selectOptions[0].text;
+  const title = stepSelect.redirectStepId ? selectOptions.find((x) => x.id)?.text : '';
 
   return (
     <div className="inline-block w-[250px]">

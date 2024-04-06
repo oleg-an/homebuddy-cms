@@ -1,5 +1,4 @@
 export interface StepSelectOptionModel {
-  index: number; // only for form
   title: string;
   value: string;
   redirectStepId?: string;

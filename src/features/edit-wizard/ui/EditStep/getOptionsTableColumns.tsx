@@ -42,12 +42,12 @@ export function getOptionsTableColumns(): Column<StepSelectOptionModel>[] {
       label: 'Title',
       key: 'title',
       headerCell: ({ value }) => <th>{value}</th>,
-      columnCell: ({ row }) => (
+      columnCell: (_, rowIndex) => (
         <td>
           <Input
             className="input-sm"
             title=""
-            name={`select.options.${row.index}.title`}
+            name={`select.options.${rowIndex}.title`}
             isErrorMessageHidden
             registerOptions={getRequiredValidation()}
           />
@@ -58,12 +58,12 @@ export function getOptionsTableColumns(): Column<StepSelectOptionModel>[] {
       label: 'Field value',
       key: 'value',
       headerCell: ({ value }) => <th className="w-[150px]">{value}</th>,
-      columnCell: ({ row }) => (
+      columnCell: (_, rowIndex) => (
         <td>
           <Input
             className="input-sm"
             title=""
-            name={`select.options.${row.index}.value`}
+            name={`select.options.${rowIndex}.value`}
             isErrorMessageHidden
             registerOptions={getRequiredValidation()}
           />
@@ -74,12 +74,12 @@ export function getOptionsTableColumns(): Column<StepSelectOptionModel>[] {
       label: 'Warning message',
       key: 'warning',
       headerCell: ({ value }) => <th>{value}</th>,
-      columnCell: ({ row }) => (
+      columnCell: (_, rowIndex) => (
         <td>
           <Input
             className="input-sm"
             title=""
-            name={`select.options.${row.index}.warningMessage`}
+            name={`select.options.${rowIndex}.warningMessage`}
           />
         </td>
       ),
@@ -88,9 +88,9 @@ export function getOptionsTableColumns(): Column<StepSelectOptionModel>[] {
       label: 'Yes / Ok',
       key: 'yesOk',
       headerCell: ({ value }) => <th className="text-center">{value}</th>,
-      columnCell: ({ row }) => (
+      columnCell: (_, rowIndex) => (
         <td className="text-center">
-          <SwitcherHookForm name={`select.options.${row.index}.yesOkButtons`} />
+          <SwitcherHookForm name={`select.options.${rowIndex}.yesOkButtons`} />
         </td>
       ),
     },
