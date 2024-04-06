@@ -11,7 +11,14 @@ import { EditStepModal } from './EditStepModal';
 import { StepCard } from './StepCard';
 
 interface WizardBuilderProps {
-  wizard?: WizardModel;
+  wizard: WizardModel | null;
+}
+
+function getNewStep() {
+  return {
+    title: '',
+    id: uuidv4(),
+  };
 }
 
 export function WizardBuilder({ wizard }: WizardBuilderProps) {
@@ -35,7 +42,7 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
     open(
       <EditStepModal
         title="Create step"
-        step={{ title: '', id: uuidv4() }}
+        step={getNewStep()}
         onEdit={(step) => {
           setSteps([...steps, step]);
         }}
@@ -65,6 +72,7 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
             <StepCard
               key={step.id}
               step={step}
+              steps={steps}
               onEditClick={() => editStepHandler(step)}
               onDeleteClick={deleteStepHandler}
             />

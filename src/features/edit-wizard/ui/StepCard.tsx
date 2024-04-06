@@ -7,12 +7,13 @@ import { uuidv4 } from 'shared/lib/uuidv4';
 import { getStepCardSelectColumns } from './getStepCardSelectColumns';
 
 interface StepCardProps {
+  steps: StepModel[];
   step: StepModel;
   onEditClick: () => void;
   onDeleteClick: (stepId: string) => void;
 }
 
-export function StepCard({ step, onEditClick, onDeleteClick }: StepCardProps) {
+export function StepCard({ step, steps, onEditClick, onDeleteClick }: StepCardProps) {
   return (
     <div className="mb-4 flex w-[700px] justify-between gap-4 rounded-md border-[2px] border-slate-100 p-6">
       <div className="flex-1">
@@ -46,6 +47,7 @@ export function StepCard({ step, onEditClick, onDeleteClick }: StepCardProps) {
               data={step.select.options}
               columns={getStepCardSelectColumns({
                 onOptionClick: () => {},
+                steps,
               })}
               rowKey={uuidv4}
             />
