@@ -1,6 +1,6 @@
 import { SideModal, SideModalBody, SideModalFooter, useModalsActions } from 'shared/ui/SideModal';
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
-import type { StepModel } from 'entities/wizard';
+import type { StepModel, StepSelectModel, StepSelectOptionModel } from 'entities/wizard';
 import { Button } from 'shared/ui/Button';
 import { Input } from 'shared/ui/Input';
 import { Divider } from 'shared/ui/Divider';
@@ -17,6 +17,63 @@ interface EditStepModalProps {
   step: StepModel;
   onEdit: (step: StepModel) => void;
 }
+
+const yesNoSelect: StepSelectModel = {
+  fieldName: '',
+  isMultiselect: false,
+  options: [
+    {
+      title: 'Yes',
+      value: 'yes',
+      yesOkButtons: false,
+    },
+    {
+      title: 'No',
+      value: 'no',
+      yesOkButtons: false,
+    },
+  ],
+};
+
+const yesNoNotSureSelect: StepSelectModel = {
+  fieldName: '',
+  isMultiselect: false,
+  options: [
+    {
+      title: 'Yes',
+      value: 'yes',
+      yesOkButtons: false,
+    },
+    {
+      title: 'No',
+      value: 'no',
+      yesOkButtons: false,
+    },
+    {
+      title: 'Not sure',
+      value: 'notSure',
+      yesOkButtons: false,
+    },
+  ],
+};
+
+const newSelect: StepSelectModel = {
+  fieldName: '',
+  isMultiselect: false,
+  options: [
+    {
+      title: '',
+      value: '',
+      yesOkButtons: false,
+    },
+  ],
+};
+
+const newSelectOption: StepSelectOptionModel = {
+  title: '',
+  value: '',
+  yesOkButtons: false,
+};
 
 export function EditStepModal({ step, onEdit, title }: EditStepModalProps) {
   const { close } = useModalsActions();
@@ -36,18 +93,12 @@ export function EditStepModal({ step, onEdit, title }: EditStepModalProps) {
   });
 
   const columns = getOptionsTableColumns({ onDeleteSelectOption: (index) => remove(index) });
+  const addOptionHandler = () => {
+    append(newSelectOption);
+  };
   const addSelectHandler = () => {
     methods.reset({
-      select: {
-        fieldName: '',
-        isMultiselect: false,
-        options: [
-          {
-            title: '',
-            value: '',
-          },
-        ],
-      },
+      select: newSelect,
     });
   };
   const deleteSelectHandler = () => {
@@ -55,52 +106,14 @@ export function EditStepModal({ step, onEdit, title }: EditStepModalProps) {
       select: undefined,
     });
   };
-  const addOptionHandler = () => {
-    append({
-      title: '',
-      value: '',
-      yesOkButtons: false,
-    });
-  };
-
   const addYesNoHandlerHandler = () => {
     methods.reset({
-      select: {
-        fieldName: '',
-        isMultiselect: false,
-        options: [
-          {
-            title: 'Yes',
-            value: 'yes',
-          },
-          {
-            title: 'No',
-            value: 'no',
-          },
-        ],
-      },
+      select: yesNoSelect,
     });
   };
   const addYesNoNotSureHandler = () => {
     methods.reset({
-      select: {
-        fieldName: '',
-        isMultiselect: false,
-        options: [
-          {
-            title: 'Yes',
-            value: 'yes',
-          },
-          {
-            title: 'No',
-            value: 'no',
-          },
-          {
-            title: 'Not sure',
-            value: 'notSure',
-          },
-        ],
-      },
+      select: yesNoNotSureSelect,
     });
   };
 

@@ -7,15 +7,17 @@ export interface StepSelectOptionModel {
   imageSrc?: string;
 }
 
+export interface StepSelectModel {
+  fieldName: string;
+  isMultiselect: boolean;
+  options: StepSelectOptionModel[];
+}
+
 export interface StepModel {
   id: string;
   title: string;
   isFirst?: boolean;
-  select?: {
-    fieldName: string;
-    isMultiselect: boolean;
-    options: StepSelectOptionModel[];
-  };
+  select?: StepSelectModel;
   input?: {
     title: string;
     value: string;

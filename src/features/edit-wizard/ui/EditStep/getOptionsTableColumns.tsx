@@ -8,6 +8,10 @@ import { SwitcherHookForm } from 'shared/ui/Switcher';
 
 import { getRequiredValidation } from '../utils';
 
+function getIconUrl(iconName: string) {
+  return `https://wizard-bf8f.restdb.io/media/${iconName}`;
+}
+
 export function getOptionsTableColumns({
   onDeleteSelectOption,
 }: {
@@ -24,7 +28,7 @@ export function getOptionsTableColumns({
             <img
               alt=""
               className="inline h-10 w-10 cursor-pointer"
-              src="/assets/wizard/yes.svg"
+              src={getIconUrl(row.imageSrc)}
               onClick={noop}
             />
           ) : (
