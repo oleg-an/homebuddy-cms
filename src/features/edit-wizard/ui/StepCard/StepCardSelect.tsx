@@ -126,7 +126,8 @@ export function StepCardSelectOptions({ options, steps, redirectToStepClick }: S
     <div className="mt-4">
       <div className="mb-2 text-sm font-bold">Select options</div>
       <Table
-        className="!mt-0"
+        hasVerticalScroll
+        className="!mt-0 max-h-[250px]"
         variant="table-sm"
         data={options}
         columns={columns}
