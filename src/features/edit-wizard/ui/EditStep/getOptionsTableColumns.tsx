@@ -3,14 +3,9 @@ import type { StepSelectOptionModel } from 'entities/wizard';
 import { Input } from 'shared/ui/Input';
 import { MaterialIcon } from 'shared/ui/MaterialIcon';
 import { Button } from 'shared/ui/Button';
-import { noop } from 'shared/lib/functions';
 import { SwitcherHookForm } from 'shared/ui/Switcher';
 
-import { getRequiredValidation } from '../utils';
-
-function getIconUrl(iconName: string) {
-  return `https://wizard-bf8f.restdb.io/media/${iconName}`;
-}
+import { getRequiredValidation, getIconUrl } from '../utils';
 
 export function getOptionsTableColumns({
   onDeleteSelectOption,
@@ -26,23 +21,24 @@ export function getOptionsTableColumns({
       headerCell: ({ value }) => <th>{value}</th>,
       columnCell: ({ row }) => (
         <td onClick={onSelectIcon}>
-          <Button
-            variant="outline"
-            size="medium"
-            type="button"
-            className="w-10 !bg-transparent"
-          >
-            {row.imageName ? (
-              <img
-                alt=""
-                className="inline h-10 w-10 cursor-pointer"
-                src={getIconUrl(row.imageName)}
-                onClick={noop}
-              />
-            ) : (
-              <MaterialIcon className="text-lg">add_photo_alternate</MaterialIcon>
-            )}
-          </Button>
+          {row.imageName ? (
+            <img
+              alt=""
+              className="inline h-10 w-10 cursor-pointer"
+              src={getIconUrl(row.imageName)}
+            />
+          ) : (
+            <>
+              <Button
+                variant="outline"
+                size="medium"
+                type="button"
+                className="w-10"
+              >
+                <MaterialIcon className="text-lg">add_photo_alternate</MaterialIcon>
+              </Button>
+            </>
+          )}
         </td>
       ),
     },
