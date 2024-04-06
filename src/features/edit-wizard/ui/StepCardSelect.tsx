@@ -69,11 +69,13 @@ export function getColumns({
       label: 'Redirect to',
       key: 'redirect',
       headerCell: ({ value }) => <th className="text-right">{value}</th>,
-      columnCell: ({ row }) => (
+      columnCell: ({ row }, optionIndex) => (
         <td className="text-right">
           <StepsSelect
             selectOptions={options}
-            onChange={(id) => redirectToStepClick({ optionIndex: row.index, redirectStepId: id })}
+            onChange={(id) => {
+              redirectToStepClick({ optionIndex, redirectStepId: id });
+            }}
             stepSelect={row}
           />
         </td>

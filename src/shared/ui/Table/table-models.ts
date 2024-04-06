@@ -3,7 +3,7 @@ import type { ReactElement, ReactNode } from 'react';
 export type Column<T> = {
   label: string;
   key: string;
-  columnCell: ({ value }: { value: T[keyof T]; row: T }) => ReactElement;
+  columnCell: ({ value }: { value: T[keyof T]; row: T }, rowIndex: number) => ReactElement;
   headerCell: ({ value }: { value: ReactNode }) => ReactElement;
   columnLoadingCell?: () => ReactElement;
   disabled?: boolean;

@@ -18,8 +18,8 @@ export function StepCard({ step, steps, onEditClick, onDeleteClick, onStepModifi
     if (!step.select) {
       return;
     }
-    const options = step.select.options.map((option) => {
-      if (option.index !== optionIndex) {
+    const options = step.select.options.map((option, index) => {
+      if (index !== optionIndex) {
         return option;
       }
 

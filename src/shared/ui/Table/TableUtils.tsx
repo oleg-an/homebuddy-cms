@@ -5,7 +5,7 @@ import { Skeleton } from 'shared/ui/Skeleton';
 import type { Column, TableProps } from './table-models';
 
 export function renderRows<T>({ data, rowClassName, rowKey, onRowClick, columns }: TableProps<T>) {
-  return (data ?? []).map((row) => {
+  return (data ?? []).map((row, rowIndex) => {
     const className = rowClassName?.(row);
 
     return (
@@ -17,10 +17,13 @@ export function renderRows<T>({ data, rowClassName, rowKey, onRowClick, columns 
         {columns.map(({ columnCell, columnLoadingCell, key }, index) => {
           return !row.loading
             ? cloneElement(
-                columnCell({
-                  value: row[key as keyof T],
-                  row,
-                }),
+                columnCell(
+                  {
+                    value: row[key as keyof T],
+                    row,
+                  },
+                  rowIndex
+                ),
                 { key: index }
               )
             : getLoadingCell(columnLoadingCell, index);
