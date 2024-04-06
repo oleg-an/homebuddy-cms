@@ -9,9 +9,10 @@ interface StepCardProps {
   step: StepModel;
   onEditClick: () => void;
   onDeleteClick: (stepId: string) => void;
+  onStepModified: (step: StepModel) => void;
 }
 
-export function StepCard({ step, steps, onEditClick, onDeleteClick }: StepCardProps) {
+export function StepCard({ step, steps, onEditClick, onDeleteClick, onStepModified }: StepCardProps) {
   return (
     <div className="mb-4 flex w-[700px] justify-between gap-4 rounded-md border-[2px] border-slate-100 p-6">
       <div className="flex-1">
@@ -40,6 +41,10 @@ export function StepCard({ step, steps, onEditClick, onDeleteClick }: StepCardPr
           <StepCardSelectOptions
             options={step.select.options}
             steps={steps}
+            redirectToStepClick={(redirectStepId) => {
+              // onStepModified
+              const modifiedStep = { ...step };
+            }}
           />
         )}
       </div>
