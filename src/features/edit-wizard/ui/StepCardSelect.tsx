@@ -9,7 +9,7 @@ const notSelectedStepOption = {
   text: 'Not selected',
 };
 
-type redirectToStepClickType = ({
+export type redirectToStepClickType = ({
   redirectStepId,
   optionIndex,
 }: {

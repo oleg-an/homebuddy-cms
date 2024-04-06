@@ -2,6 +2,7 @@ import type { StepModel } from 'entities/wizard';
 import { Button } from 'shared/ui/Button';
 import { MaterialIcon } from 'shared/ui/MaterialIcon';
 
+import type { redirectToStepClickType } from './StepCardSelect';
 import { StepCardSelectOptions } from './StepCardSelect';
 
 interface StepCardProps {
@@ -13,6 +14,30 @@ interface StepCardProps {
 }
 
 export function StepCard({ step, steps, onEditClick, onDeleteClick, onStepModified }: StepCardProps) {
+  const redirectToStepClickHandler: redirectToStepClickType = ({ optionIndex, redirectStepId }) => {
+    if (!step.select) {
+      return;
+    }
+    const options = step.select.options.map((option) => {
+      if (option.index !== optionIndex) {
+        return option;
+      }
+
+      return {
+        ...option,
+        redirectStepId,
+      };
+    });
+
+    onStepModified({
+      ...step,
+      select: {
+        ...step.select,
+        options,
+      },
+    });
+  };
+
   return (
     <div className="mb-4 flex w-[700px] justify-between gap-4 rounded-md border-[2px] border-slate-100 p-6">
       <div className="flex-1">
@@ -41,10 +66,7 @@ export function StepCard({ step, steps, onEditClick, onDeleteClick, onStepModifi
           <StepCardSelectOptions
             options={step.select.options}
             steps={steps}
-            redirectToStepClick={(redirectStepId) => {
-              // onStepModified
-              const modifiedStep = { ...step };
-            }}
+            redirectToStepClick={redirectToStepClickHandler}
           />
         )}
       </div>

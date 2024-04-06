@@ -59,6 +59,15 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
     // update wizard
   };
 
+  const onStepModified = (step: StepModel) => {
+    console.log(step);
+    setSteps(
+      steps.map((item) => {
+        return item.id !== step.id ? item : step;
+      })
+    );
+  };
+
   return (
     <div className="flex justify-between">
       <div className="flex-1">
@@ -75,6 +84,7 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
               steps={steps}
               onEditClick={() => editStepHandler(step)}
               onDeleteClick={deleteStepHandler}
+              onStepModified={onStepModified}
             />
           ))}
         </ReactSortable>
