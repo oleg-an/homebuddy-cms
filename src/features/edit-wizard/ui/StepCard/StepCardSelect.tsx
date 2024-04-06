@@ -30,7 +30,7 @@ interface StepsSelectProps {
 function StepsSelect({ selectOptions, onChange, stepSelect }: StepsSelectProps) {
   const [selectedOptionId, setSelectedOptionId] = useState(stepSelect.redirectStepId || notSelectedStepOption.id);
   const editDialog = useHidable();
-  const title = stepSelect.redirectStepId ? selectOptions.find((x) => x.id)?.text : '';
+  const title = selectOptions.find((x) => x.id === stepSelect.redirectStepId)?.text || '';
 
   return (
     <div className="inline-block w-[250px]">
@@ -56,7 +56,7 @@ function StepsSelect({ selectOptions, onChange, stepSelect }: StepsSelectProps) 
         </ModalDialog>
       )}
       <div className="flex items-center justify-end gap-2">
-        <div>{title}</div>
+        <div className="max-w-[200px] truncate">{title}</div>
         <Button
           size="small"
           variant="outline"
