@@ -1,6 +1,6 @@
 import { type Column, Table } from 'shared/ui/Table';
 import { uuidv4 } from 'shared/lib/uuidv4';
-import type { SelectOptionModel, StepModel } from 'entities/wizard';
+import type { StepSelectOptionModel, StepModel } from 'entities/wizard';
 import { type Option, Select } from 'shared/ui/Select';
 import { useState } from 'react';
 
@@ -18,12 +18,13 @@ export type redirectToStepClickType = ({
 }) => void;
 
 interface StepsSelectProps {
+  stepSelect: StepSelectOptionModel;
   selectOptions: Option[];
   onChange: (id: string) => void;
 }
 
-function StepsSelect({ selectOptions, onChange }: StepsSelectProps) {
-  const [selectedOptionId, setSelectedOptionId] = useState(notSelectedStepOption.id);
+function StepsSelect({ selectOptions, onChange, stepSelect }: StepsSelectProps) {
+  const [selectedOptionId, setSelectedOptionId] = useState(stepSelect.redirectStepId || notSelectedStepOption.id);
 
   return (
     <Select
@@ -48,7 +49,7 @@ export function getColumns({
 }: {
   redirectToStepClick: redirectToStepClickType;
   steps: StepModel[];
-}): Column<SelectOptionModel>[] {
+}): Column<StepSelectOptionModel>[] {
   const options = [
     notSelectedStepOption,
     ...steps.map(({ title, id }) => ({
@@ -73,6 +74,7 @@ export function getColumns({
           <StepsSelect
             selectOptions={options}
             onChange={(id) => redirectToStepClick({ optionIndex: row.index, redirectStepId: id })}
+            stepSelect={row}
           />
         </td>
       ),
@@ -81,7 +83,7 @@ export function getColumns({
 }
 
 interface StepCardSelect {
-  options: SelectOptionModel[];
+  options: StepSelectOptionModel[];
   steps: StepModel[];
   redirectToStepClick: redirectToStepClickType;
 }

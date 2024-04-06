@@ -4,7 +4,7 @@ import { SwitcherHookForm } from 'shared/ui/Switcher';
 import { Divider } from 'shared/ui/Divider';
 import { Table } from 'shared/ui/Table';
 import { uuidv4 } from 'shared/lib/uuidv4';
-import type { SelectOptionModel, StepModel } from 'entities/wizard';
+import type { StepSelectOptionModel, StepModel } from 'entities/wizard';
 import { useState } from 'react';
 
 import { getRequiredValidation } from '../utils';
@@ -15,7 +15,7 @@ interface StepCardProps {
   step: StepModel;
 }
 
-function assignIndexToOptions(options: SelectOptionModel[]) {
+function assignIndexToOptions(options: StepSelectOptionModel[]) {
   return options.map((option, index) => ({
     ...option,
     index,

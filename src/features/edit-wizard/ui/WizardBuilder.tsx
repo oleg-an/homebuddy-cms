@@ -60,7 +60,6 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
   };
 
   const onStepModified = (step: StepModel) => {
-    console.log(step);
     setSteps(
       steps.map((item) => {
         return item.id !== step.id ? item : step;

@@ -1,5 +1,5 @@
 import type { Column } from 'shared/ui/Table';
-import type { SelectOptionModel } from 'entities/wizard';
+import type { StepSelectOptionModel } from 'entities/wizard';
 import { Input } from 'shared/ui/Input';
 import { MaterialIcon } from 'shared/ui/MaterialIcon';
 import { Button } from 'shared/ui/Button';
@@ -8,7 +8,7 @@ import { SwitcherHookForm } from 'shared/ui/Switcher';
 
 import { getRequiredValidation } from '../utils';
 
-export function getOptionsTableColumns(): Column<SelectOptionModel>[] {
+export function getOptionsTableColumns(): Column<StepSelectOptionModel>[] {
   return [
     {
       label: 'Icon',

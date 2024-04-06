@@ -1,4 +1,4 @@
-export interface SelectOptionModel {
+export interface StepSelectOptionModel {
   index: number; // only for form
   title: string;
   value: string;
@@ -15,7 +15,7 @@ export interface StepModel {
   select?: {
     fieldName: string;
     isMultiselect: boolean;
-    options: SelectOptionModel[];
+    options: StepSelectOptionModel[];
   };
   input?: {
     title: string;
