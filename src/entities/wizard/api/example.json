@@ -17,11 +17,13 @@
             "title": "Repair existing windows",
             "value": "repair",
             "additionalTitle": "Title",
-            "additionalWarning": "Unfortunately, our contractors only...."
+            "additionalWarning": "Unfortunately, our contractors only....",
+            "yesOkButtons": false
           },
           {
             "title": "Not sure",
-            "value": "notSure"
+            "value": "notSure",
+            "yesOkButtons": false
           }
         ]
       }

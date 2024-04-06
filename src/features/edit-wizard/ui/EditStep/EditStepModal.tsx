@@ -59,6 +59,7 @@ export function EditStepModal({ step, onEdit, title }: EditStepModalProps) {
     append({
       title: '',
       value: '',
+      yesOkButtons: false,
     });
   };
 
