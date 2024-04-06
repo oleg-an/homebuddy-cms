@@ -1,10 +1,8 @@
 import type { StepModel } from 'entities/wizard';
 import { Button } from 'shared/ui/Button';
 import { MaterialIcon } from 'shared/ui/MaterialIcon';
-import { Table } from 'shared/ui/Table';
-import { uuidv4 } from 'shared/lib/uuidv4';
 
-import { getStepCardSelectColumns } from './getStepCardSelectColumns';
+import { StepCardSelectOptions } from './StepCardSelect';
 
 interface StepCardProps {
   steps: StepModel[];
@@ -39,19 +37,10 @@ export function StepCard({ step, steps, onEditClick, onDeleteClick }: StepCardPr
           </div>
         </div>
         {step.select && (
-          <div className="mt-4">
-            <div className="mb-2 text-sm font-bold">Select options</div>
-            <Table
-              className="!mt-0"
-              variant="table-sm"
-              data={step.select.options}
-              columns={getStepCardSelectColumns({
-                onOptionClick: () => {},
-                steps,
-              })}
-              rowKey={uuidv4}
-            />
-          </div>
+          <StepCardSelectOptions
+            options={step.select.options}
+            steps={steps}
+          />
         )}
       </div>
       <div>

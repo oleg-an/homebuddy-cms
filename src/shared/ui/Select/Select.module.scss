@@ -18,7 +18,7 @@
   }
 
   &Text {
-    @apply text-slate-900 text-sm font-medium truncate;
+    @apply text-slate-900 text-sm font-medium truncate pr-2;
 
     max-width: 95%;
 
