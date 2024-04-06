@@ -4,7 +4,7 @@ export interface StepSelectOptionModel {
   redirectStepId?: string;
   warningMessage?: string;
   yesOkButtons: boolean;
-  imageSrc?: string;
+  imageName?: string;
 }
 
 export interface StepSelectModel {

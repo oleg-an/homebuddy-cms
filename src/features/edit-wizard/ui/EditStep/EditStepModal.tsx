@@ -26,13 +26,13 @@ const yesNoSelect: StepSelectModel = {
       title: 'Yes',
       value: 'yes',
       yesOkButtons: false,
-      imageSrc: 'yes.svg',
+      imageName: 'yes.svg',
     },
     {
       title: 'No',
       value: 'no',
       yesOkButtons: false,
-      imageSrc: 'no.svg',
+      imageName: 'no.svg',
     },
   ],
 };
@@ -45,19 +45,19 @@ const yesNoNotSureSelect: StepSelectModel = {
       title: 'Yes',
       value: 'yes',
       yesOkButtons: false,
-      imageSrc: 'yes.svg',
+      imageName: 'yes.svg',
     },
     {
       title: 'No',
       value: 'no',
       yesOkButtons: false,
-      imageSrc: 'no.svg',
+      imageName: 'no.svg',
     },
     {
       title: 'Not sure',
       value: 'notSure',
       yesOkButtons: false,
-      imageSrc: 'not-sure.svg',
+      imageName: 'not-sure.svg',
     },
   ],
 };

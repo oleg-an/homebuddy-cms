@@ -24,11 +24,11 @@ export function getOptionsTableColumns({
       headerCell: ({ value }) => <th>{value}</th>,
       columnCell: ({ row }) => (
         <td>
-          {row.imageSrc ? (
+          {row.imageName ? (
             <img
               alt=""
               className="inline h-10 w-10 cursor-pointer"
-              src={getIconUrl(row.imageSrc)}
+              src={getIconUrl(row.imageName)}
               onClick={noop}
             />
           ) : (
