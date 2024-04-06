@@ -9,12 +9,20 @@ const notSelectedStepOption = {
   text: 'Not selected',
 };
 
+type redirectToStepClickType = ({
+  redirectStepId,
+  optionIndex,
+}: {
+  optionIndex: number;
+  redirectStepId: string;
+}) => void;
+
 interface StepsSelectProps {
   options: Option[];
-  redirectToStepClick: (redirectStepId: string) => void;
+  onChange: (id: string) => void;
 }
 
-function StepsSelect({ options, redirectToStepClick }: StepsSelectProps) {
+function StepsSelect({ options, onChange }: StepsSelectProps) {
   const [selectedOptionId, setSelectedOptionId] = useState(notSelectedStepOption.id);
 
   return (
@@ -28,7 +36,7 @@ function StepsSelect({ options, redirectToStepClick }: StepsSelectProps) {
       options={options}
       onChange={(id) => {
         setSelectedOptionId(id);
-        redirectToStepClick(id);
+        onChange(id);
       }}
     />
   );
@@ -38,7 +46,7 @@ export function getColumns({
   redirectToStepClick,
   steps,
 }: {
-  redirectToStepClick: (redirectStepId: string) => void;
+  redirectToStepClick: redirectToStepClickType;
   steps: StepModel[];
 }): Column<SelectOptionModel>[] {
   const options = [
@@ -60,11 +68,11 @@ export function getColumns({
       label: 'Redirect to',
       key: 'redirect',
       headerCell: ({ value }) => <th className="text-right">{value}</th>,
-      columnCell: () => (
+      columnCell: ({ row }) => (
         <td className="text-right">
           <StepsSelect
             options={options}
-            redirectToStepClick={redirectToStepClick}
+            onChange={(id) => redirectToStepClick({ optionIndex: row.index, redirectStepId: id })}
           />
         </td>
       ),
@@ -75,7 +83,7 @@ export function getColumns({
 interface StepCardSelect {
   options: SelectOptionModel[];
   steps: StepModel[];
-  redirectToStepClick: (redirectStepId: string) => void;
+  redirectToStepClick: redirectToStepClickType;
 }
 
 export function StepCardSelectOptions({ options, steps, redirectToStepClick }: StepCardSelect) {

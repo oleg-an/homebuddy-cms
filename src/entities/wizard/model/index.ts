@@ -1,5 +1,5 @@
 export interface SelectOptionModel {
-  index?: number; // only for form
+  index: number; // only for form
   title: string;
   value: string;
   nextStepId?: string;
