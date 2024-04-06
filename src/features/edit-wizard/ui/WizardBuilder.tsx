@@ -7,7 +7,7 @@ import { uuidv4 } from 'shared/lib/uuidv4';
 import { ReactSortable } from 'react-sortablejs';
 import { Button } from 'shared/ui/Button';
 
-import { EditStepModal } from './EditStepModal';
+import { EditStepModal } from './EditStep';
 import { StepCard } from './StepCard';
 
 interface WizardBuilderProps {

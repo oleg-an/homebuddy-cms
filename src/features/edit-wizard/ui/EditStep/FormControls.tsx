@@ -22,7 +22,7 @@ function assignIndexToOptions(options: StepSelectOptionModel[]) {
   }));
 }
 
-export function EditStepFormControls(props: StepCardProps) {
+export function FormControls(props: StepCardProps) {
   const [step, setStep] = useState<StepModel>(props.step);
   const columns = getOptionsTableColumns();
 

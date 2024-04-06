@@ -3,7 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import type { StepModel } from 'entities/wizard';
 import { Button } from 'shared/ui/Button';
 
-import { EditStepFormControls } from './EditStepFormControls';
+import { FormControls } from './FormControls';
 
 interface EditStepModalProps {
   title: string;
@@ -31,7 +31,7 @@ export function EditStepModal({ step, onEdit, title }: EditStepModalProps) {
       <FormProvider {...methods}>
         <SideModalBody title={title}>
           <form onSubmit={onSubmit}>
-            <EditStepFormControls step={step} />
+            <FormControls step={step} />
           </form>
         </SideModalBody>
         <SideModalFooter>
