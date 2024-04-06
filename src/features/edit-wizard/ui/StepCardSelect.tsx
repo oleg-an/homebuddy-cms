@@ -18,11 +18,11 @@ export type redirectToStepClickType = ({
 }) => void;
 
 interface StepsSelectProps {
-  options: Option[];
+  selectOptions: Option[];
   onChange: (id: string) => void;
 }
 
-function StepsSelect({ options, onChange }: StepsSelectProps) {
+function StepsSelect({ selectOptions, onChange }: StepsSelectProps) {
   const [selectedOptionId, setSelectedOptionId] = useState(notSelectedStepOption.id);
 
   return (
@@ -33,7 +33,7 @@ function StepsSelect({ options, onChange }: StepsSelectProps) {
       selectedOptionId={selectedOptionId}
       isSmall
       title=""
-      options={options}
+      options={selectOptions}
       onChange={(id) => {
         setSelectedOptionId(id);
         onChange(id);
@@ -71,7 +71,7 @@ export function getColumns({
       columnCell: ({ row }) => (
         <td className="text-right">
           <StepsSelect
-            options={options}
+            selectOptions={options}
             onChange={(id) => redirectToStepClick({ optionIndex: row.index, redirectStepId: id })}
           />
         </td>
