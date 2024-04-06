@@ -135,7 +135,7 @@ export function EditStepModal({ step, onEdit, title }: EditStepModalProps) {
                 registerOptions={getRequiredValidation()}
               />
               <div>
-                <div className="flex justify-end gap-1">
+                <div className="flex justify-end gap-2">
                   <Button
                     iconLeftName="radio_button_checked"
                     size="small"
@@ -167,14 +167,24 @@ export function EditStepModal({ step, onEdit, title }: EditStepModalProps) {
                     Yes/No/No sure
                   </Button>
                 </div>
-                <div className="mt-2">
+                <div className="mt-2 flex gap-2">
                   <Button
                     size="small"
                     iconLeftName="text_fields"
                     variant="outline"
                     type="button"
+                    disabled
                   >
                     Input
+                  </Button>
+                  <Button
+                    size="small"
+                    iconLeftName="text_fields"
+                    variant="outline"
+                    type="button"
+                    disabled
+                  >
+                    Textarea
                   </Button>
                 </div>
               </div>
