@@ -65,7 +65,7 @@ export function StepCard({ step, steps, onEditClick, onDeleteClick, onStepModifi
         {step.select && (
           <StepCardSelectOptions
             options={step.select.options}
-            steps={steps}
+            steps={steps.filter(({ id }) => id !== step.id)}
             redirectToStepClick={redirectToStepClickHandler}
           />
         )}
