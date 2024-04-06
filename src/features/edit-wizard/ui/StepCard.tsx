@@ -44,7 +44,7 @@ export function StepCard({ step, steps, onEditClick, onDeleteClick }: StepCardPr
         )}
       </div>
       <div>
-        <MaterialIcon className="handle cursor-pointer text-slate-700">open_with</MaterialIcon>
+        <MaterialIcon className="handle mt-1 cursor-pointer text-slate-700">open_with</MaterialIcon>
       </div>
     </div>
   );
