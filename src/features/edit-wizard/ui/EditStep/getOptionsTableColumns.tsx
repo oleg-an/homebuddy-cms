@@ -14,8 +14,10 @@ function getIconUrl(iconName: string) {
 
 export function getOptionsTableColumns({
   onDeleteSelectOption,
+  onSelectIcon,
 }: {
   onDeleteSelectOption: (index: number) => void;
+  onSelectIcon: () => void;
 }): Column<StepSelectOptionModel>[] {
   return [
     {
@@ -23,26 +25,24 @@ export function getOptionsTableColumns({
       key: 'icon',
       headerCell: ({ value }) => <th>{value}</th>,
       columnCell: ({ row }) => (
-        <td>
-          {row.imageName ? (
-            <img
-              alt=""
-              className="inline h-10 w-10 cursor-pointer"
-              src={getIconUrl(row.imageName)}
-              onClick={noop}
-            />
-          ) : (
-            <>
-              <Button
-                variant="outline"
-                size="medium"
-                type="button"
-                className="w-10"
-              >
-                <MaterialIcon className="text-lg">add_photo_alternate</MaterialIcon>
-              </Button>
-            </>
-          )}
+        <td onClick={onSelectIcon}>
+          <Button
+            variant="outline"
+            size="medium"
+            type="button"
+            className="w-10 !bg-transparent"
+          >
+            {row.imageName ? (
+              <img
+                alt=""
+                className="inline h-10 w-10 cursor-pointer"
+                src={getIconUrl(row.imageName)}
+                onClick={noop}
+              />
+            ) : (
+              <MaterialIcon className="text-lg">add_photo_alternate</MaterialIcon>
+            )}
+          </Button>
         </td>
       ),
     },

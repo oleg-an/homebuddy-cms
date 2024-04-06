@@ -10,6 +10,7 @@ import { uuidv4 } from 'shared/lib/uuidv4';
 
 import { getRequiredValidation } from '../utils';
 
+import { SelectIconModal } from './SelectIconModal';
 import { getOptionsTableColumns } from './getOptionsTableColumns';
 
 interface EditStepModalProps {
@@ -81,7 +82,7 @@ const newSelectOption: StepSelectOptionModel = {
 };
 
 export function EditStepModal({ step, onEdit, title }: EditStepModalProps) {
-  const { close } = useModalsActions();
+  const { close, open } = useModalsActions();
   const methods = useForm({
     defaultValues: {
       title: step.title,
@@ -97,7 +98,12 @@ export function EditStepModal({ step, onEdit, title }: EditStepModalProps) {
     close();
   });
 
-  const columns = getOptionsTableColumns({ onDeleteSelectOption: (index) => remove(index) });
+  const columns = getOptionsTableColumns({
+    onDeleteSelectOption: (index) => remove(index),
+    onSelectIcon: () => {
+      open(<SelectIconModal />);
+    },
+  });
   const addOptionHandler = () => {
     append(newSelectOption);
   };
