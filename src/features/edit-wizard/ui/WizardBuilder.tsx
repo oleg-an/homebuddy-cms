@@ -60,11 +60,7 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
   };
 
   const onStepModified = (step: StepModel) => {
-    setSteps(
-      steps.map((item) => {
-        return item.id !== step.id ? item : step;
-      })
-    );
+    setSteps(steps.map((item) => (item.id !== step.id ? item : step)));
   };
 
   return (

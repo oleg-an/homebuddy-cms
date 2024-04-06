@@ -8,7 +8,11 @@ import { SwitcherHookForm } from 'shared/ui/Switcher';
 
 import { getRequiredValidation } from '../utils';
 
-export function getOptionsTableColumns(): Column<StepSelectOptionModel>[] {
+export function getOptionsTableColumns({
+  onDeleteSelectOption,
+}: {
+  onDeleteSelectOption: (index: number) => void;
+}): Column<StepSelectOptionModel>[] {
   return [
     {
       label: 'Icon',
@@ -98,13 +102,14 @@ export function getOptionsTableColumns(): Column<StepSelectOptionModel>[] {
       label: 'Delete',
       key: 'delete',
       headerCell: ({ value }) => <th className="text-center">{value}</th>,
-      columnCell: () => (
+      columnCell: (_, rowIndex) => (
         <td className="text-center">
           <Button
             className="w-10"
             size="small"
             variant="outline"
             type="button"
+            onClick={() => onDeleteSelectOption(rowIndex)}
           >
             <MaterialIcon className="text-lg">delete</MaterialIcon>
           </Button>
