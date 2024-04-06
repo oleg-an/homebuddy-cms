@@ -193,7 +193,7 @@ export function EditStepModal({ step, onEdit, title }: EditStepModalProps) {
                       registerOptions={getRequiredValidation()}
                     />
                     <div className="ml-4 text-sm font-medium">Multiselect</div>
-                    <SwitcherHookForm name="select.isMultiSelect" />
+                    <SwitcherHookForm name="select.isMultiselect" />
                   </div>
                   <div className="flex items-center gap-2">
                     <Button

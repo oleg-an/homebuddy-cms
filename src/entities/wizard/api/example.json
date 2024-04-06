@@ -6,7 +6,7 @@
       "title": "What do you need help with?",
       "select": {
         "fieldName": "workType",
-        "isMultiSelect": false,
+        "isMultiselect": false,
         "options": [
           {
             "title": "Replace existing windows",
