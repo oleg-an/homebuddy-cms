@@ -6,9 +6,8 @@ import { uuidv4 } from 'shared/lib/uuidv4';
 import { ReactSortable } from 'react-sortablejs';
 import { Button } from 'shared/ui/Button';
 import { useHidable } from 'shared/lib/hooks';
-import { EditStepModal } from 'features/edit-wizard/ui/EditStep/EditStepModal';
 
-import { EditStepModalBody } from './EditStep';
+import { EditStepModal, EditStepModalBody } from './EditStep';
 import { StepCard } from './StepCard';
 
 interface WizardBuilderProps {
@@ -29,17 +28,6 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
   const [editableStep, setEditableStep] = useState<StepModel>();
   const editStepHandler = (step: StepModel) => {
     setEditableStep(step);
-    /*
-    open(
-      <EditStepModal
-        title="Edit step"
-        step={step}
-        onEdit={(step) => {
-          setSteps(steps.map((value) => (value.id === step.id ? step : value)));
-        }}
-      />
-    );
-    */
     editDialog.show();
   };
 
@@ -67,7 +55,9 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
   };
 
   const onStepModified = (step: StepModel) => {
-    setSteps(steps.map((item) => (item.id !== step.id ? item : step)));
+    const updatedSteps = steps.map((item) => (item.id !== step.id ? item : step));
+
+    setSteps(updatedSteps);
   };
 
   return (
@@ -81,11 +71,7 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
         {editableStep && (
           <EditStepModalBody
             step={editableStep}
-            onEdit={(step) => {
-              const updatedSteps = steps.map((value) => (value.id === step.id ? step : value));
-
-              setSteps(updatedSteps);
-            }}
+            onEdit={onStepModified}
             onClose={editDialog.hide}
           />
         )}
