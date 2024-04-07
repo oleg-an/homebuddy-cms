@@ -24,16 +24,16 @@ export function getOptionsTableColumns({
           {row.imageName ? (
             <img
               alt=""
-              className="inline h-10 w-10 cursor-pointer"
+              className="inline w-[41px] cursor-pointer"
               src={getIconUrl(row.imageName)}
             />
           ) : (
             <>
               <Button
+                className="w-[41px]"
                 variant="outline"
                 size="medium"
                 type="button"
-                className="w-10"
               >
                 <MaterialIcon className="text-lg">add_photo_alternate</MaterialIcon>
               </Button>
