@@ -91,7 +91,7 @@ export function getOptionsTableColumns({
     {
       label: 'Yes / Ok',
       key: 'yesOk',
-      headerCell: ({ value }) => <th className="text-center">{value}</th>,
+      headerCell: ({ value }) => <th className="whitespace-nowrap text-center">{value}</th>,
       columnCell: (_, rowIndex) => (
         <td className="text-center">
           <SwitcherHookForm name={`select.options.${rowIndex}.yesOkButtons`} />
