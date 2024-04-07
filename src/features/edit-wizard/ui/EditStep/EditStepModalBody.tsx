@@ -1,5 +1,5 @@
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
-import type { StepModel, StepSelectModel, StepSelectOptionModel } from 'entities/wizard';
+import type { StepModel } from 'entities/wizard';
 import { Button } from 'shared/ui/Button';
 import { Input } from 'shared/ui/Input';
 import { Divider } from 'shared/ui/Divider';
@@ -12,74 +12,13 @@ import { getRequiredValidation } from '../utils';
 
 import { getOptionsTableColumns } from './getOptionsTableColumns';
 import style from './EditStepModal.module.scss';
+import { newSelect, newSelectOption, yesNoNotSureSelect, yesNoSelect } from './const';
 
 interface EditStepModalProps {
   step: StepModel;
   onEdit: (step: StepModel) => void;
   onClose: () => void;
 }
-
-const yesNoSelect: StepSelectModel = {
-  fieldName: '',
-  isMultiselect: false,
-  options: [
-    {
-      title: 'Yes',
-      value: 'yes',
-      yesOkButtons: false,
-      imageName: 'yes.svg',
-    },
-    {
-      title: 'No',
-      value: 'no',
-      yesOkButtons: false,
-      imageName: 'no.svg',
-    },
-  ],
-};
-
-const yesNoNotSureSelect: StepSelectModel = {
-  fieldName: '',
-  isMultiselect: false,
-  options: [
-    {
-      title: 'Yes',
-      value: 'yes',
-      yesOkButtons: false,
-      imageName: 'yes.svg',
-    },
-    {
-      title: 'No',
-      value: 'no',
-      yesOkButtons: false,
-      imageName: 'no.svg',
-    },
-    {
-      title: 'Not sure',
-      value: 'notSure',
-      yesOkButtons: false,
-      imageName: 'not-sure.svg',
-    },
-  ],
-};
-
-const newSelect: StepSelectModel = {
-  fieldName: '',
-  isMultiselect: false,
-  options: [
-    {
-      title: '',
-      value: '',
-      yesOkButtons: false,
-    },
-  ],
-};
-
-const newSelectOption: StepSelectOptionModel = {
-  title: '',
-  value: '',
-  yesOkButtons: false,
-};
 
 export function EditStepModalBody({ step, onEdit, onClose }: EditStepModalProps) {
   const methods = useForm({
@@ -96,7 +35,6 @@ export function EditStepModalBody({ step, onEdit, onClose }: EditStepModalProps)
     onEdit({ title, select, id: step.id });
     onClose();
   });
-
   const columns = getOptionsTableColumns({
     onDeleteSelectOption: (index) => remove(index),
     onSelectIcon: () => {
