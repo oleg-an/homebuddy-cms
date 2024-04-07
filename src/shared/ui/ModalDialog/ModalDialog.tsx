@@ -46,9 +46,7 @@ export function ModalDialog({ children, isOpen, onClose, title, subtitle, classN
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel
-                className={classNames('max-w-[456px] p-12 bg-white shadow-modal rounded-md flex flex-col', className)}
-              >
+              <Dialog.Panel className={classNames('p-12 bg-white shadow-modal rounded-md flex flex-col', className)}>
                 <Dialog.Title className="text-xl font-bold">{title}</Dialog.Title>
                 {subtitle && <Dialog.Description className="mt-2 text-sm">{subtitle}</Dialog.Description>}
                 {children}

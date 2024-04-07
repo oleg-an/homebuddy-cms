@@ -1,266 +1,62 @@
-import { SideModal, SideModalBody, SideModalFooter, useModalsActions } from 'shared/ui/SideModal';
-import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
-import type { StepModel, StepSelectModel, StepSelectOptionModel } from 'entities/wizard';
-import { Button } from 'shared/ui/Button';
-import { Input } from 'shared/ui/Input';
-import { Divider } from 'shared/ui/Divider';
-import { SwitcherHookForm } from 'shared/ui/Switcher';
-import { Table } from 'shared/ui/Table';
-import { uuidv4 } from 'shared/lib/uuidv4';
+import { Dialog, Transition } from '@headlessui/react';
+import classNames from 'classnames';
+import type { ReactNode } from 'react';
+import { Fragment } from 'react';
 
-import { getRequiredValidation } from '../utils';
-
-import { SelectIconModal } from './SelectIconModal';
-import { getOptionsTableColumns } from './getOptionsTableColumns';
-
-interface EditStepModalProps {
-  title: string;
-  step: StepModel;
-  onEdit: (step: StepModel) => void;
+interface ModalDialogProps {
+  children: ReactNode;
+  isOpen: boolean;
+  onClose: () => void;
+  title: string | JSX.Element;
+  subtitle?: string;
+  className?: string;
 }
 
-const yesNoSelect: StepSelectModel = {
-  fieldName: '',
-  isMultiselect: false,
-  options: [
-    {
-      title: 'Yes',
-      value: 'yes',
-      yesOkButtons: false,
-      imageName: 'yes.svg',
-    },
-    {
-      title: 'No',
-      value: 'no',
-      yesOkButtons: false,
-      imageName: 'no.svg',
-    },
-  ],
-};
-
-const yesNoNotSureSelect: StepSelectModel = {
-  fieldName: '',
-  isMultiselect: false,
-  options: [
-    {
-      title: 'Yes',
-      value: 'yes',
-      yesOkButtons: false,
-      imageName: 'yes.svg',
-    },
-    {
-      title: 'No',
-      value: 'no',
-      yesOkButtons: false,
-      imageName: 'no.svg',
-    },
-    {
-      title: 'Not sure',
-      value: 'notSure',
-      yesOkButtons: false,
-      imageName: 'not-sure.svg',
-    },
-  ],
-};
-
-const newSelect: StepSelectModel = {
-  fieldName: '',
-  isMultiselect: false,
-  options: [
-    {
-      title: '',
-      value: '',
-      yesOkButtons: false,
-    },
-  ],
-};
-
-const newSelectOption: StepSelectOptionModel = {
-  title: '',
-  value: '',
-  yesOkButtons: false,
-};
-
-export function EditStepModal({ step, onEdit, title }: EditStepModalProps) {
-  const { close, open } = useModalsActions();
-  const methods = useForm({
-    defaultValues: {
-      title: step.title,
-      select: step.select,
-    },
-  });
-  const { fields, append, remove } = useFieldArray({
-    control: methods.control,
-    name: 'select.options',
-  });
-  const onSubmit = methods.handleSubmit(({ title, select }) => {
-    onEdit({ title, select, id: step.id });
-    close();
-  });
-
-  const columns = getOptionsTableColumns({
-    onDeleteSelectOption: (index) => remove(index),
-    onSelectIcon: () => {
-      open(<SelectIconModal />);
-    },
-  });
-  const addOptionHandler = () => {
-    append(newSelectOption);
-  };
-  const addSelectHandler = () => {
-    methods.reset({
-      select: newSelect,
-    });
-  };
-  const deleteSelectHandler = () => {
-    methods.reset({
-      select: undefined,
-    });
-  };
-  const addYesNoHandlerHandler = () => {
-    methods.reset({
-      select: yesNoSelect,
-    });
-  };
-  const addYesNoNotSureHandler = () => {
-    methods.reset({
-      select: yesNoNotSureSelect,
-    });
-  };
-
+export function EditStepModal({ children, isOpen, onClose, title, subtitle, className }: ModalDialogProps) {
   return (
-    <SideModal isLarge>
-      <FormProvider {...methods}>
-        <SideModalBody title={title}>
-          <form onSubmit={onSubmit}>
-            <div className="flex justify-between gap-4">
-              <Input
-                className="flex-1"
-                title="Title"
-                name="title"
-                registerOptions={getRequiredValidation()}
-              />
-              <div>
-                <div className="flex justify-end gap-2">
-                  <Button
-                    iconLeftName="radio_button_checked"
-                    size="small"
-                    variant="outline"
-                    type="button"
-                    onClick={addSelectHandler}
-                    disabled={!!fields.length}
-                  >
-                    Select
-                  </Button>
-                  <Button
-                    iconLeftName="radio_button_checked"
-                    size="small"
-                    variant="outline"
-                    type="button"
-                    onClick={addYesNoHandlerHandler}
-                    disabled={!!fields.length}
-                  >
-                    Yes/No
-                  </Button>
-                  <Button
-                    iconLeftName="radio_button_checked"
-                    size="small"
-                    variant="outline"
-                    type="button"
-                    onClick={addYesNoNotSureHandler}
-                    disabled={!!fields.length}
-                  >
-                    Yes/No/No sure
-                  </Button>
-                </div>
-                <div className="mt-2 flex gap-2">
-                  <Button
-                    size="small"
-                    iconLeftName="text_fields"
-                    variant="outline"
-                    type="button"
-                    disabled
-                  >
-                    Input
-                  </Button>
-                  <Button
-                    size="small"
-                    iconLeftName="text_fields"
-                    variant="outline"
-                    type="button"
-                    disabled
-                  >
-                    Textarea
-                  </Button>
-                </div>
-              </div>
-            </div>
-            <Divider />
-            {!!fields.length && (
-              <div className="pb-5">
-                <div className="mb-5 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="text-sm font-medium">Select field name</div>
-                    <Input
-                      className="input-sm w-[150px]"
-                      title=""
-                      name="select.fieldName"
-                      isErrorMessageHidden
-                      registerOptions={getRequiredValidation()}
-                    />
-                    <div className="ml-4 text-sm font-medium">Multiselect</div>
-                    <SwitcherHookForm name="select.isMultiselect" />
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Button
-                      size="medium"
-                      variant="outline"
-                      type="button"
-                      iconLeftName="add"
-                      onClick={addOptionHandler}
-                    >
-                      Add option
-                    </Button>
-                    <Button
-                      size="medium"
-                      variant="outline-danger"
-                      type="button"
-                      iconLeftName="delete"
-                      onClick={deleteSelectHandler}
-                    >
-                      Delete select
-                    </Button>
-                  </div>
-                </div>
-                <Table
-                  className="!m-0"
-                  variant="table-sm"
-                  data={fields}
-                  columns={columns}
-                  rowKey={uuidv4}
-                />
-              </div>
-            )}
-          </form>
-        </SideModalBody>
-        <SideModalFooter>
-          <div className="flex justify-end gap-4">
-            <Button
-              type="button"
-              onClick={close}
-              variant="outline"
+    <Transition
+      appear
+      show={isOpen}
+      as={Fragment}
+    >
+      <Dialog
+        as="div"
+        className="relative z-10"
+        onClose={onClose}
+      >
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-slate-900/60" />
+        </Transition.Child>
+        <div className="fixed inset-0 overflow-y-auto">
+          <div className="h-screen">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
             >
-              Close
-            </Button>
-            <Button
-              className="w-full-screen w-[150px] shrink-0"
-              onClick={onSubmit}
-            >
-              Next
-            </Button>
+              <div className="flex min-h-full justify-center p-4">
+                <Dialog.Panel className={classNames('p-12 bg-white shadow-modal rounded-md flex flex-col', className)}>
+                  <Dialog.Title className="text-xl font-bold">{title}</Dialog.Title>
+                  {subtitle && <Dialog.Description className="mt-2 text-sm">{subtitle}</Dialog.Description>}
+                  {children}
+                </Dialog.Panel>
+              </div>
+            </Transition.Child>
           </div>
-        </SideModalFooter>
-      </FormProvider>
-    </SideModal>
+        </div>
+      </Dialog>
+    </Transition>
   );
 }

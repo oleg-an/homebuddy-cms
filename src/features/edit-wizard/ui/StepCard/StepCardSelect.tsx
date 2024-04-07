@@ -36,7 +36,7 @@ function StepsSelect({ selectOptions, onChange, stepSelect }: StepsSelectProps) 
     <div className="inline-block w-[250px]">
       {editDialog.isShown && (
         <ModalDialog
-          className="w-[600px]"
+          className="w-[500px]"
           isOpen={editDialog.isShown}
           onClose={editDialog.hide}
           title="Redirect to"

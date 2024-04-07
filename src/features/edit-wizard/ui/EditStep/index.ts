@@ -1,1 +1,1 @@
-export * from './EditStepModal';
+export * from './EditStepModalBody';
