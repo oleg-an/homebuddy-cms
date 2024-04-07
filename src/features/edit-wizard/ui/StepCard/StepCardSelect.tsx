@@ -18,13 +18,13 @@ export type redirectToStepClickType = ({
   optionIndex,
 }: {
   optionIndex: number;
-  redirectStepId: string;
+  redirectStepId: string | undefined;
 }) => void;
 
 interface StepsSelectProps {
   stepSelect: StepSelectOptionModel;
   selectOptions: Option[];
-  onChange: (id: string) => void;
+  onChange: (id: string | undefined) => void;
 }
 
 function StepsSelect({ selectOptions, onChange, stepSelect }: StepsSelectProps) {
@@ -50,7 +50,7 @@ function StepsSelect({ selectOptions, onChange, stepSelect }: StepsSelectProps) 
             options={selectOptions}
             onChange={(id) => {
               setSelectedOptionId(id);
-              onChange(id);
+              onChange(id === notSelectedStepOption.id ? undefined : id);
             }}
           />
         </ModalDialog>
@@ -61,9 +61,7 @@ function StepsSelect({ selectOptions, onChange, stepSelect }: StepsSelectProps) 
           size="small"
           variant="outline"
           className="w-[30px]"
-          onClick={() => {
-            editDialog.show();
-          }}
+          onClick={editDialog.show}
         >
           <MaterialIcon className="text-base">edit</MaterialIcon>
         </Button>
