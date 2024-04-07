@@ -68,11 +68,11 @@ export function EditStepModalBody({ step, onEdit, onClose }: EditStepModalProps)
   return (
     <FormProvider {...methods}>
       <form
-        className="mt-4 flex h-full flex-col justify-between"
+        className="flex h-full flex-col justify-between"
         onSubmit={onSubmit}
       >
-        <div className={classNames('h-full', style.scroll)}>
-          <div className="flex flex-1 justify-between gap-4">
+        <div className={classNames('flex-1', style.scroll)}>
+          <div className="mt-4 flex flex-1 justify-between gap-4">
             <Input
               className="flex-1"
               title="Title"
@@ -159,7 +159,7 @@ export function EditStepModalBody({ step, onEdit, onClose }: EditStepModalProps)
             </div>
           )}
         </div>
-        <div className="">
+        <div className="shrink-0">
           <Divider className="my-2" />
           <div className="flex justify-end gap-4">
             <Button
