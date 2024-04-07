@@ -2,23 +2,16 @@ import React, { useState } from 'react';
 import type { StepModel, WizardModel } from 'entities/wizard';
 import { useCreateWizard } from 'entities/wizard';
 import { useUpdateWizard } from 'entities/wizard';
-import { uuidv4 } from 'shared/lib/uuidv4';
 import { ReactSortable } from 'react-sortablejs';
 import { Button } from 'shared/ui/Button';
 import { useHidable } from 'shared/lib/hooks';
 
+import { getNewStep } from './utils';
 import { EditStepModal, EditStepModalBody } from './EditStep';
 import { StepCard } from './StepCard';
 
 interface WizardBuilderProps {
   wizard: WizardModel | null;
-}
-
-function getNewStep() {
-  return {
-    title: '',
-    id: uuidv4(),
-  };
 }
 
 export function WizardBuilder({ wizard }: WizardBuilderProps) {
@@ -32,17 +25,8 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
   };
 
   const createStepHandler = () => {
-    /*
-    open(
-      <EditStepModal
-        title="Create step"
-        step={getNewStep()}
-        onEdit={(step) => {
-          setSteps([...steps, step]);
-        }}
-      />
-    );
-     */
+    setEditableStep(getNewStep());
+    editDialog.show();
   };
 
   const deleteStepHandler = (stepId: string) => {

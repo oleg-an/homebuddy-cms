@@ -1,3 +1,5 @@
+import { uuidv4 } from 'shared/lib/uuidv4';
+
 export function getRequiredValidation() {
   return {
     validate: (key: string) => {
@@ -12,4 +14,11 @@ export function getRequiredValidation() {
 
 export function getIconUrl(iconName: string) {
   return `https://wizard-bf8f.restdb.io/media/${iconName}`;
+}
+
+export function getNewStep() {
+  return {
+    title: '',
+    id: uuidv4(),
+  };
 }
