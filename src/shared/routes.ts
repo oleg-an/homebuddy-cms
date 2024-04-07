@@ -4,6 +4,7 @@ type PageRoutesType = {
 
 export const pageRoutes = {
   app: {
+    mediaLibrary: '/mediaLibrary',
     wizardList: '/wizards',
     wizard: '/wizards/:id',
     newWizard: '/wizards/new',

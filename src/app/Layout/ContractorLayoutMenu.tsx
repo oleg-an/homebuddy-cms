@@ -23,6 +23,12 @@ export function ContractorLayoutMenu() {
             href={pageRoutes.app.wizardList}
             isSmallSize={!isMenuOpen}
           />
+          <ContractorMenuLink
+            iconName="perm_media"
+            title="Media Library"
+            href={pageRoutes.app.mediaLibrary}
+            isSmallSize={!isMenuOpen}
+          />
         </div>
       </div>
     </LayoutMenu>

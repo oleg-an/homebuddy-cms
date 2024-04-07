@@ -6,6 +6,7 @@ import { Error404 } from 'pages/Error404';
 import { EditWizard } from 'pages/Wizards/EditWizard';
 import { WizardList } from 'pages/Wizards/WizardList';
 import { CreateWizard } from 'pages/Wizards/CreateWizard';
+import { MediaLibrary } from 'pages/MediaLibrary';
 
 import { AppLayout } from './Layout/AppLayout';
 
@@ -22,6 +23,9 @@ export function App() {
           </Route>
           <Route path={pageRoutes.app.wizardList}>
             <WizardList />
+          </Route>
+          <Route path={pageRoutes.app.mediaLibrary}>
+            <MediaLibrary />
           </Route>
           <Route
             exact
