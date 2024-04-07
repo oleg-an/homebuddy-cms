@@ -6,7 +6,6 @@ import { uuidv4 } from 'shared/lib/uuidv4';
 import { ReactSortable } from 'react-sortablejs';
 import { Button } from 'shared/ui/Button';
 import { useHidable } from 'shared/lib/hooks';
-import { noop } from 'shared/lib/functions';
 import { EditStepModal } from 'features/edit-wizard/ui/EditStep/EditStepModal';
 
 import { EditStepModalBody } from './EditStep';
@@ -82,7 +81,12 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
         {editableStep && (
           <EditStepModalBody
             step={editableStep}
-            onEdit={noop}
+            onEdit={(step) => {
+              const updatedSteps = steps.map((value) => (value.id === step.id ? step : value));
+
+              setSteps(updatedSteps);
+            }}
+            onClose={editDialog.hide}
           />
         )}
       </EditStepModal>

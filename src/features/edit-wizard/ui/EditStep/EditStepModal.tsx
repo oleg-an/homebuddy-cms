@@ -46,7 +46,7 @@ export function EditStepModal({ children, isOpen, onClose, title, subtitle, clas
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="flex min-h-full justify-center p-4">
+              <div className="flex h-full justify-center p-4">
                 <Dialog.Panel className={classNames('p-12 bg-white shadow-modal rounded-md flex flex-col', className)}>
                   <Dialog.Title className="text-xl font-bold">{title}</Dialog.Title>
                   {subtitle && <Dialog.Description className="mt-2 text-sm">{subtitle}</Dialog.Description>}
