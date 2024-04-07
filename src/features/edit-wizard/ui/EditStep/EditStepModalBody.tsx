@@ -112,7 +112,7 @@ export function EditStepModalBody({ step, onEdit, onClose }: EditStepModalProps)
               </Button>
             </div>
           </div>
-          <Divider />
+          <Divider className="!my-6" />
           {!!fields.length && (
             <div>
               <div className="mb-5 flex items-center justify-between">
