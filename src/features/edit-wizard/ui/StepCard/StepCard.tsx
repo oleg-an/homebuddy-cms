@@ -14,6 +14,7 @@ interface StepCardProps {
 }
 
 export function StepCard({ step, steps, onEditClick, onDeleteClick, onStepModified }: StepCardProps) {
+  const filteredSteps = steps.filter(({ id }) => id !== step.id);
   const redirectToStepClickHandler: redirectToStepClickType = ({ optionIndex, redirectStepId }) => {
     if (!step.select) {
       return;
@@ -67,7 +68,7 @@ export function StepCard({ step, steps, onEditClick, onDeleteClick, onStepModifi
       {step.select && (
         <StepCardSelectOptions
           options={step.select.options}
-          steps={steps.filter(({ id }) => id !== step.id)}
+          steps={filteredSteps}
           redirectToStepClick={redirectToStepClickHandler}
         />
       )}
