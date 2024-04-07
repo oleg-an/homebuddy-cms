@@ -18,7 +18,7 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
   const saveWizardQuery = !wizard ? useCreateWizard() : useUpdateWizard(wizard._id);
   const [steps, setSteps] = useState<StepModel[]>(wizard ? wizard.steps : []);
   const editDialog = useHidable();
-  const [editableStep, setEditableStep] = useState<StepModel>();
+  const [editableStep, setEditableStep] = useState<StepModel>(getNewStep());
   const editStepHandler = (step: StepModel) => {
     setEditableStep(step);
     editDialog.show();
@@ -47,18 +47,16 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
   return (
     <>
       <EditStepModal
-        className="w-[1000px]	"
+        className="w-[1000px]"
         title="Edit step"
         onClose={editDialog.hide}
         isOpen={editDialog.isShown}
       >
-        {editableStep && (
-          <EditStepModalBody
-            step={editableStep}
-            onEdit={onStepModified}
-            onClose={editDialog.hide}
-          />
-        )}
+        <EditStepModalBody
+          step={editableStep}
+          onEdit={onStepModified}
+          onClose={editDialog.hide}
+        />
       </EditStepModal>
       <div className="flex justify-between">
         <div className="flex-1">

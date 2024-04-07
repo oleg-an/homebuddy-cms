@@ -68,7 +68,7 @@ export function EditStepModalBody({ step, onEdit, onClose }: EditStepModalProps)
   return (
     <FormProvider {...methods}>
       <form
-        className="flex h-full flex-col justify-between"
+        className="flex h-[calc(100%-32px)] flex-col justify-between"
         onSubmit={onSubmit}
       >
         <div className={classNames('flex-1', style.scroll)}>
