@@ -35,20 +35,20 @@ export function useGetWizardList() {
   });
 } */
 
-export function useUpdateWizard(id: string) {
-  return useMutation({
-    mutationFn: (data: StepModel[]) => api.put(`/rest/wizards/${id}`, data),
-  });
-}
-
 export function useCreateWizard() {
   return useMutation({
     mutationFn: (data: StepModel[]) => api.post(`/rest/wizards`, data),
   });
 }
 
+export function useUpdateWizard(id: string) {
+  return useMutation({
+    mutationFn: (data: StepModel[]) => api.put(`/rest/wizards/${id}`, data),
+  });
+}
+
 export function useDeleteWizard(id: string) {
   return useMutation({
-    mutationFn: () => api.post(`/rest/wizards/${id}`, {}),
+    mutationFn: () => api.delete(`/rest/wizards/${id}`),
   });
 }
