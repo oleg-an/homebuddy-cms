@@ -40,7 +40,7 @@ export function StepCard({ step, steps, onEditClick, onDeleteClick, onStepModifi
   };
 
   return (
-    <div className="mb-4 w-[700px] gap-4 rounded-md border-[2px] border-slate-100 p-6">
+    <div className="mb-4 w-[600px] gap-4 rounded-md border-[2px] border-slate-100 p-6">
       <div className="flex justify-between">
         <div className="truncate font-medium">{step.title}</div>
         <div className="flex justify-between gap-4">

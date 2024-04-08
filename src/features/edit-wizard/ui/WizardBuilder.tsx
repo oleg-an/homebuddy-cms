@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type { StepModel, WizardModel } from 'entities/wizard';
+import { useDeleteWizard } from 'entities/wizard';
 import { useCreateWizard, useUpdateWizard } from 'entities/wizard';
 import { ReactSortable } from 'react-sortablejs';
 import { Button } from 'shared/ui/Button';
@@ -16,6 +17,7 @@ interface WizardBuilderProps {
 export function WizardBuilder({ wizard }: WizardBuilderProps) {
   const [isNewStep, setIsNewStep] = useState(false);
   const saveWizardQuery = !wizard ? useCreateWizard() : useUpdateWizard(wizard._id);
+  const deleteWizardQuery = useDeleteWizard(wizard?._id || '0');
   const [steps, setSteps] = useState<StepModel[]>(wizard ? wizard.steps : []);
   const editDialog = useHidable();
   const [editableStep, setEditableStep] = useState<StepModel>(getNewStep());
@@ -36,8 +38,9 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
   };
 
   const saveWizardHandler = () => {
-    console.log(steps);
-    // update wizard
+    saveWizardQuery.mutate(steps, {
+      onSuccess: () => {},
+    });
   };
 
   const stepModifiedHandler = (step: StepModel) => {
@@ -50,7 +53,9 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
     setSteps(steps.map((item) => (item.id !== step.id ? item : step)));
   };
 
-  const deleteWizardHandler = () => {};
+  const deleteWizardHandler = () => {
+    deleteWizardQuery.mutate();
+  };
   const closeStepModalHandler = () => {
     editDialog.hide();
     setIsNewStep(false);
@@ -91,6 +96,7 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
               type="button"
               variant="outline-danger"
               onClick={deleteWizardHandler}
+              loading={deleteWizardQuery.isLoading}
             >
               Delete wizard
             </Button>
@@ -100,6 +106,7 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
             type="submit"
             onClick={saveWizardHandler}
             disabled={!steps.length}
+            loading={saveWizardQuery.isLoading}
           >
             {!wizard ? 'Create wizard' : 'Update wizard'}
           </Button>
