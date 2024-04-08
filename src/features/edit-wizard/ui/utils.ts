@@ -13,7 +13,7 @@ export function getRequiredValidation() {
 }
 
 export function getIconUrl(iconName: string) {
-  return `https://wizard-bf8f.restdb.io/media/${iconName}`;
+  return `${iconName}`;
 }
 
 export function getNewStep() {

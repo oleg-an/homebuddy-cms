@@ -8,13 +8,13 @@ export const yesNoSelect: StepSelectModel = {
       title: 'Yes',
       value: 'yes',
       yesOkButtons: false,
-      imageName: 'yes.svg',
+      imageName: '/assets/wizard/yes.svg',
     },
     {
       title: 'No',
       value: 'no',
       yesOkButtons: false,
-      imageName: 'no.svg',
+      imageName: '/assets/wizard/no.svg',
     },
   ],
 };
@@ -27,19 +27,19 @@ export const yesNoNotSureSelect: StepSelectModel = {
       title: 'Yes',
       value: 'yes',
       yesOkButtons: false,
-      imageName: 'yes.svg',
+      imageName: '/assets/wizard/yes.svg',
     },
     {
       title: 'No',
       value: 'no',
       yesOkButtons: false,
-      imageName: 'no.svg',
+      imageName: '/assets/wizard/no.svg',
     },
     {
       title: 'Not sure',
       value: 'notSure',
       yesOkButtons: false,
-      imageName: 'not-sure.svg',
+      imageName: '/assets/wizard/not-sure.svg',
     },
   ],
 };
