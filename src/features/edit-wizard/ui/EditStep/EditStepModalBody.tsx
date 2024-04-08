@@ -27,12 +27,17 @@ export function EditStepModalBody({ step, onEdit, onClose }: EditStepModalProps)
       select: step.select,
     },
   });
+
   const { fields, append, remove } = useFieldArray({
     control: methods.control,
     name: 'select.options',
   });
   const onSubmit = methods.handleSubmit(({ title, select }) => {
-    onEdit({ title, select, id: step.id });
+    onEdit({
+      title,
+      select: select?.options.length ? select : undefined,
+      id: step.id,
+    });
     onClose();
   });
   const columns = getOptionsTableColumns({

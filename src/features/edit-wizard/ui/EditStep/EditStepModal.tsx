@@ -1,18 +1,19 @@
 import { Dialog, Transition } from '@headlessui/react';
 import classNames from 'classnames';
-import type { ReactNode } from 'react';
 import { Fragment } from 'react';
+import type { StepModel } from 'entities/wizard';
+
+import { EditStepModalBody } from './EditStepModalBody';
 
 interface ModalDialogProps {
-  children: ReactNode;
   isOpen: boolean;
   onClose: () => void;
   title: string | JSX.Element;
-  subtitle?: string;
-  className?: string;
+  step: StepModel;
+  onEdit: (step: StepModel) => void;
 }
 
-export function EditStepModal({ children, isOpen, onClose, title, subtitle, className }: ModalDialogProps) {
+export function EditStepModal({ isOpen, onClose, title, step, onEdit }: ModalDialogProps) {
   return (
     <Transition
       appear
@@ -47,10 +48,13 @@ export function EditStepModal({ children, isOpen, onClose, title, subtitle, clas
               leaveTo="opacity-0 scale-95"
             >
               <div className="flex h-full justify-center p-4">
-                <Dialog.Panel className={classNames('p-8 bg-white shadow-modal rounded-md flex flex-col', className)}>
+                <Dialog.Panel className={classNames('p-8 bg-white shadow-modal rounded-md flex flex-col')}>
                   <Dialog.Title className="text-xl font-bold">{title}</Dialog.Title>
-                  {subtitle && <Dialog.Description className="mt-2 text-sm">{subtitle}</Dialog.Description>}
-                  {children}
+                  <EditStepModalBody
+                    step={step}
+                    onEdit={onEdit}
+                    onClose={onClose}
+                  />
                 </Dialog.Panel>
               </div>
             </Transition.Child>

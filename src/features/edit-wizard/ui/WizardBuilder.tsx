@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import type { StepModel, WizardModel } from 'entities/wizard';
-import { useCreateWizard } from 'entities/wizard';
-import { useUpdateWizard } from 'entities/wizard';
+import { useCreateWizard, useUpdateWizard } from 'entities/wizard';
 import { ReactSortable } from 'react-sortablejs';
 import { Button } from 'shared/ui/Button';
 import { useHidable } from 'shared/lib/hooks';
 
 import { getNewStep } from './utils';
-import { EditStepModal, EditStepModalBody } from './EditStep';
+import { EditStepModal } from './EditStep';
 import { StepCard } from './StepCard';
 
 interface WizardBuilderProps {
@@ -38,26 +37,27 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
     // update wizard
   };
 
-  const onStepModified = (step: StepModel) => {
-    const updatedSteps = steps.map((item) => (item.id !== step.id ? item : step));
+  const stepModifiedHandler = (step: StepModel) => {
+    if (!wizard) {
+      setSteps([...steps, step]);
 
-    setSteps(updatedSteps);
+      return;
+    }
+
+    setSteps(steps.map((item) => (item.id !== step.id ? item : step)));
   };
+
+  const deleteWizardHandler = () => {};
 
   return (
     <>
       <EditStepModal
-        className="w-[1000px]"
         title="Edit step"
         onClose={editDialog.hide}
         isOpen={editDialog.isShown}
-      >
-        <EditStepModalBody
-          step={editableStep}
-          onEdit={onStepModified}
-          onClose={editDialog.hide}
-        />
-      </EditStepModal>
+        step={editableStep}
+        onEdit={stepModifiedHandler}
+      />
       <div className="flex justify-between">
         <div className="flex-1">
           <ReactSortable
@@ -73,12 +73,21 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
                 steps={steps}
                 onEditClick={() => editStepHandler(step)}
                 onDeleteClick={deleteStepHandler}
-                onStepModified={onStepModified}
+                onStepModified={stepModifiedHandler}
               />
             ))}
           </ReactSortable>
         </div>
         <div className="fixed right-10 mb-4 flex flex-col gap-4">
+          {!!wizard && (
+            <Button
+              type="button"
+              variant="outline-danger"
+              onClick={deleteWizardHandler}
+            >
+              Delete wizard
+            </Button>
+          )}
           <Button
             variant="primary"
             type="submit"
