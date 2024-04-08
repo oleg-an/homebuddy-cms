@@ -49,7 +49,7 @@ export function EditStepModal({ isOpen, onClose, step, onEdit, isNewStep }: Moda
             >
               <div className="flex h-full justify-center p-4">
                 <Dialog.Panel className={classNames('p-8 bg-white shadow-modal rounded-md flex flex-col w-[1000px]')}>
-                  <Dialog.Title className="text-xl font-bold">{isNewStep ? 'Edit step' : 'Create step'}</Dialog.Title>
+                  <Dialog.Title className="text-xl font-bold">{!isNewStep ? 'Edit step' : 'Create step'}</Dialog.Title>
                   <EditStepModalBody
                     step={step}
                     onEdit={onEdit}
