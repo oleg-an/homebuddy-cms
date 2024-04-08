@@ -14,17 +14,20 @@ interface WizardBuilderProps {
 }
 
 export function WizardBuilder({ wizard }: WizardBuilderProps) {
+  const [isNewStep, setIsNewStep] = useState(false);
   const saveWizardQuery = !wizard ? useCreateWizard() : useUpdateWizard(wizard._id);
   const [steps, setSteps] = useState<StepModel[]>(wizard ? wizard.steps : []);
   const editDialog = useHidable();
   const [editableStep, setEditableStep] = useState<StepModel>(getNewStep());
   const editStepHandler = (step: StepModel) => {
     setEditableStep(step);
+    setIsNewStep(false);
     editDialog.show();
   };
 
   const createStepHandler = () => {
     setEditableStep(getNewStep());
+    setIsNewStep(true);
     editDialog.show();
   };
 
@@ -38,7 +41,7 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
   };
 
   const stepModifiedHandler = (step: StepModel) => {
-    if (!wizard) {
+    if (isNewStep) {
       setSteps([...steps, step]);
 
       return;
@@ -48,12 +51,16 @@ export function WizardBuilder({ wizard }: WizardBuilderProps) {
   };
 
   const deleteWizardHandler = () => {};
+  const closeStepModalHandler = () => {
+    editDialog.hide();
+    setIsNewStep(false);
+  };
 
   return (
     <>
       <EditStepModal
-        title="Edit step"
-        onClose={editDialog.hide}
+        isNewStep={isNewStep}
+        onClose={closeStepModalHandler}
         isOpen={editDialog.isShown}
         step={editableStep}
         onEdit={stepModifiedHandler}

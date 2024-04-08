@@ -6,14 +6,14 @@ import type { StepModel } from 'entities/wizard';
 import { EditStepModalBody } from './EditStepModalBody';
 
 interface ModalDialogProps {
+  isNewStep: boolean;
   isOpen: boolean;
   onClose: () => void;
-  title: string | JSX.Element;
   step: StepModel;
   onEdit: (step: StepModel) => void;
 }
 
-export function EditStepModal({ isOpen, onClose, title, step, onEdit }: ModalDialogProps) {
+export function EditStepModal({ isOpen, onClose, step, onEdit, isNewStep }: ModalDialogProps) {
   return (
     <Transition
       appear
@@ -48,8 +48,8 @@ export function EditStepModal({ isOpen, onClose, title, step, onEdit }: ModalDia
               leaveTo="opacity-0 scale-95"
             >
               <div className="flex h-full justify-center p-4">
-                <Dialog.Panel className={classNames('p-8 bg-white shadow-modal rounded-md flex flex-col')}>
-                  <Dialog.Title className="text-xl font-bold">{title}</Dialog.Title>
+                <Dialog.Panel className={classNames('p-8 bg-white shadow-modal rounded-md flex flex-col w-[1000px]')}>
+                  <Dialog.Title className="text-xl font-bold">{isNewStep ? 'Edit step' : 'Create step'}</Dialog.Title>
                   <EditStepModalBody
                     step={step}
                     onEdit={onEdit}
