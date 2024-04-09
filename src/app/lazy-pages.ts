@@ -6,10 +6,4 @@ const ContractorAuth = lazy(() =>
   }))
 );
 
-const ContractorPasswordRecovery = lazy(() =>
-  import('pages/ContractorPasswordRecovery').then((module) => ({
-    default: module.ContractorPasswordRecovery,
-  }))
-);
-
-export { ContractorAuth, ContractorPasswordRecovery };
+export { ContractorAuth };
