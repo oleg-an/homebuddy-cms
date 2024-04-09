@@ -1,54 +1,39 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { api } from 'shared/lib/api';
-import type { StepModel } from 'entities/wizard';
-
-import wizardMock from './example.json';
+import type { StepModel, WizardModel } from 'entities/wizard';
+import PocketBase from 'pocketbase';
 
 const getWizardKey = ['getWizard'];
 const getWizardList = ['getWizardList'];
 
-/*
+const pb = new PocketBase('https://homebuddy-wizard.pockethost.io');
+
 export function useGetWizard({ id }: { id: string }) {
-  return useQuery({
+  return useQuery<WizardModel>({
     queryKey: getWizardKey,
-    queryFn: () => api.get<WizardModel>(`/rest/wizards/${id}`).then((x) => x.data),
+    queryFn: () => pb.collection('wizards').getOne(id),
   });
 }
 
- */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function useGetWizard({ id }: { id: string }) {
-  return useQuery({
-    queryKey: getWizardKey,
-    queryFn: () => Promise.resolve(wizardMock),
-  });
-}
 export function useGetWizardList() {
-  return useQuery({
+  return useQuery<WizardModel[]>({
     queryKey: getWizardList,
-    queryFn: () => Promise.resolve([wizardMock]),
+    queryFn: () =>
+      pb.collection('wizards').getFullList({
+        sort: '-created',
+      }),
   });
 }
-
-/*
-export function useGetWizardList() {
-  return useQuery({
-    queryKey: getWizardList,
-    queryFn: () => api.get<WizardModel[]>(`/rest/wizards`).then((x) => x.data),
-  });
-}
- */
 
 export function useCreateWizard() {
   return useMutation({
-    mutationFn: (data: StepModel[]) => api.post(`/rest/wizards`, JSON.stringify(data)),
+    mutationFn: (data: StepModel[]) => api.post(`/rest/wizards`, data),
   });
 }
 
 export function useUpdateWizard(id: string) {
   return useMutation({
-    mutationFn: (data: StepModel[]) => api.put(`/rest/wizards/${id}`, JSON.stringify(data)),
+    mutationFn: (data: StepModel[]) => api.put(`/rest/wizards/${id}`, data),
   });
 }
 

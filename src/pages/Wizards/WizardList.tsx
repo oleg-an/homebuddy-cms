@@ -15,7 +15,7 @@ function getColumns(): Column<WizardModel>[] {
       label: 'Id',
       key: 'id',
       headerCell: ({ value }) => <th>{value}</th>,
-      columnCell: ({ row }) => <td>{row._id}</td>,
+      columnCell: ({ row }) => <td>{row.id}</td>,
     },
   ];
 }
@@ -48,8 +48,8 @@ export function WizardList() {
           columns={columns}
           rowKey={uuidv4}
           hasRowCursorPointer
-          onRowClick={({ _id }) => {
-            history.push(pathToUrl(pageRoutes.app.wizard, { id: _id }));
+          onRowClick={({ id }) => {
+            history.push(pathToUrl(pageRoutes.app.wizard, { id }));
           }}
         />
       </>

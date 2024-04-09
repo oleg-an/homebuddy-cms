@@ -25,6 +25,6 @@ export interface StepModel {
 }
 
 export interface WizardModel {
-  _id: string;
+  id: string;
   steps: StepModel[];
 }
