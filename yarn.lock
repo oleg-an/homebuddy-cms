@@ -16305,6 +16305,7 @@ __metadata:
     npm-package-json-lint: 6.4.0
     nyc: 15.1.0
     path-to-regexp: 6.2.1
+    pocketbase: 0.21.1
     prettier: 2.8.7
     react: 17.0.2
     react-datepicker: 4.11.0
@@ -21632,6 +21633,13 @@ __metadata:
   dependencies:
     irregular-plurals: ^3.2.0
   checksum: fea2e903efca67cc5c7a8952fca3db46ae8d9e9353373b406714977e601a5d3b628bcb043c3ad2126c6ff0e73d8020bf43af30a72dd087eff1ec240eb13b90e1
+  languageName: node
+  linkType: hard
+
+"pocketbase@npm:0.21.1":
+  version: 0.21.1
+  resolution: "pocketbase@npm:0.21.1"
+  checksum: d0e15b01de5f16648e4e7d8ba2f5bb9d4c605fede853bd17f46032d22edf9136341c85ac1253e56e1958eefd5208112b6ec6e415749e6a06327d7d6fa74b0e2d
   languageName: node
   linkType: hard
 
